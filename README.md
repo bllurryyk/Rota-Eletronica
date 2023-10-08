@@ -1,3 +1,4 @@
+![alt banner com imagens do aplicativo](https://i.imgur.com/unOL88j.png)
 # Rota Eletrônica
 Este aplicativo tem o intuito de contribuir com a resolução do problema de descarte irregular de eletrônicos, entregando informações educacionais relacionadas, além de indicar pontos onde essa entrega pode ser feito, tudo isso com o foco na cidade de Aracaju.
 
