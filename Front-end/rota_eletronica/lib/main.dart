@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:rota_eletronica/paginas/incopleto_pagina_configuracao.dart';
+import 'package:rota_eletronica/paginas/incopleto_pagina_favoritos.dart';
+import 'package:rota_eletronica/paginas/incopleto_pagina_mapa.dart';
+import 'package:rota_eletronica/paginas/pagina_inicial.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,28 +39,47 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _indiceAtual = 0;
+  final List<Widget> _telas = [
+    PaginaInicial(),
+    PaginaMapa(),
+    PaginaFavoritos(),
+    PaginaMinhaConta()
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              widget.title,
-            ),
-            Container(
-              margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-              width: 150,
-              height: 150,
-              child: Image.network("lib/image/logo.png"),
-            ),
-          ],
-        ),
+      body: _telas[_indiceAtual],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _indiceAtual,
+        onTap: (int newIndex) {
+          setState(() {
+            _indiceAtual = newIndex;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            label: "Página Inicial",
+            backgroundColor: Colors.deepPurpleAccent,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.map_outlined),
+            label: "Mapa",
+            backgroundColor: Colors.deepPurpleAccent,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite_outline),
+            label: "Favoritos",
+            backgroundColor: Colors.deepPurpleAccent,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings_outlined),
+            label: "Minha Conta",
+            backgroundColor: Colors.deepPurpleAccent,
+          ),
+        ],
       ),
     );
   }
