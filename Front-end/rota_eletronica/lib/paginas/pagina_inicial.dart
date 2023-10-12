@@ -16,7 +16,7 @@ class _PaginaInicialState extends State<PaginaInicial> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Promo(),
+            //Promo(),
             Cabecalho(),
             Pesquisa(),
             CabecalhoTags(),
