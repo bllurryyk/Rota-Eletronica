@@ -1,5 +1,7 @@
+// ignore_for_file: unused_field, use_build_context_synchronously
+
 import 'package:flutter/material.dart';
-import 'package:rota_eletronica/main.dart';
+import 'package:rota_eletronica/testes/pagina_login_cadastro.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -40,7 +42,7 @@ class _PaginaOnboardingState extends State<PaginaOnboarding> {
               onPressed: () => _controlePagina.jumpToPage(4),
               style: ElevatedButton.styleFrom(
                 shape: const StadiumBorder(),
-                backgroundColor: const Color(0xFF3F51B5),
+                backgroundColor: const Color(0xff8497FE),
               ),
               child: const Text(
                 'Skip',
@@ -85,7 +87,7 @@ class _PaginaOnboardingState extends State<PaginaOnboarding> {
                           dotHeight: 8,
                           dotWidth: 8,
                           dotColor: Colors.black26,
-                          activeDotColor: Colors.indigo),
+                          activeDotColor: Color(0xff8497FE)),
                       onDotClicked: (index) => _controlePagina.animateToPage(
                         index,
                         duration: const Duration(microseconds: 300),
@@ -106,7 +108,7 @@ class _PaginaOnboardingState extends State<PaginaOnboarding> {
                             },
                             child: const Text(
                               'Iniciar',
-                              style: TextStyle(color: Colors.indigo),
+                              style: TextStyle(color: Color(0xff8497FE)),
                             ),
                           )
                         : ultimaPagina
@@ -118,11 +120,11 @@ class _PaginaOnboardingState extends State<PaginaOnboarding> {
                                   Navigator.of(context).pushReplacement(
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const MyHomePage()));
+                                              const PaginaLoginCadastro()));
                                 },
                                 style: ElevatedButton.styleFrom(
                                   shape: const StadiumBorder(),
-                                  backgroundColor: const Color(0xFF3F51B5),
+                                  backgroundColor: const Color(0xff8497FE),
                                 ),
                                 child: const Text(
                                   'Vamos Começar?',
@@ -138,7 +140,7 @@ class _PaginaOnboardingState extends State<PaginaOnboarding> {
                                 },
                                 child: const Text(
                                   'Próximo',
-                                  style: TextStyle(color: Colors.indigo),
+                                  style: TextStyle(color: Color(0xff8497FE)),
                                 ),
                               ),
                   ),
