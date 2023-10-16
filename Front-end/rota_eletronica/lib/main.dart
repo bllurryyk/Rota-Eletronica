@@ -4,6 +4,7 @@ import 'package:rota_eletronica/paginas/pagina_principal.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   final preferencia = await SharedPreferences.getInstance();
   final mostrarInicio = preferencia.getBool('mostrarInicio') ?? false;
 

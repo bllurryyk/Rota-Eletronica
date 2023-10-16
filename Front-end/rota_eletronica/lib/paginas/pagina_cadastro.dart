@@ -222,7 +222,7 @@ class _PaginaCadastroState extends State<PaginaCadastro> {
                         minimumSize: const Size.fromHeight(50),
                         backgroundColor: const Color(0xff8497FE),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(5),
                         ),
                       ),
                       onPressed: () {

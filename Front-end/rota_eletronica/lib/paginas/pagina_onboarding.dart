@@ -34,7 +34,7 @@ class _PaginaOnboardingState extends State<PaginaOnboarding> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         actions: [
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -166,7 +166,7 @@ final List<Onboarding> paginas = [
   Onboarding(
       'lib/image/capa.png',
       'Encontre pontos para descartar seu lixo eletrônico',
-      'Localize pontos de coleta próximos em um piscar de olhos.\n Simplificando o descarte responsável.'),
+      'Localize pontos de coleta próximos em um piscar de olhos.\nSimplificando o descarte responsável.'),
   Onboarding(
       'lib/image/capa.png',
       'Leia guias explicativos para entender mais sobre o problema crescente do lixo eletrônico',
