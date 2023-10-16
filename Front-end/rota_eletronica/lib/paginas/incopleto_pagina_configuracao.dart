@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rota_eletronica/paginas/pagina_onboarding.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class PaginaMinhaConta extends StatefulWidget {
   const PaginaMinhaConta({
@@ -26,6 +28,14 @@ class _PaginaMinhaContaState extends State<PaginaMinhaConta> {
               height: 150,
               child: Image.network("lib/image/logo.png"),
             ),
+            TextButton(
+                onPressed: () async {
+                  final preferencia = await SharedPreferences.getInstance();
+                  preferencia.setBool('mostrarHome', false);
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => const PaginaOnboarding()));
+                },
+                child: Text('Sair'))
           ],
         ),
       ),

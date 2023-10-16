@@ -3,19 +3,20 @@ import 'package:rota_eletronica/paginas/incopleto_pagina_configuracao.dart';
 import 'package:rota_eletronica/paginas/incopleto_pagina_favoritos.dart';
 import 'package:rota_eletronica/paginas/incopleto_pagina_mapa.dart';
 import 'package:rota_eletronica/paginas/pagina_inicial.dart';
+import 'package:rota_eletronica/paginas/pagina_onboarding.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  final preferencia = await SharedPreferences.getInstance();
+  final mostrarHome = preferencia.getBool('mostrarHome') ?? false;
+
+  runApp(MyApp(mostrarHome: mostrarHome));
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class MyApp extends StatelessWidget {
+  final bool mostrarHome;
+  const MyApp({super.key, required this.mostrarHome});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,14 +26,13 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Rota Eletrônica'),
+      home: mostrarHome ? const MyHomePage() : const PaginaOnboarding(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -41,10 +41,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _indiceAtual = 0;
   final List<Widget> _telas = [
-    PaginaInicial(),
-    PaginaMapa(),
-    PaginaFavoritos(),
-    PaginaMinhaConta()
+    const PaginaInicial(),
+    const PaginaMapa(),
+    const PaginaFavoritos(),
+    const PaginaMinhaConta()
   ];
 
   @override
