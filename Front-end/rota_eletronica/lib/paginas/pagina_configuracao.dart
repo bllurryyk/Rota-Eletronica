@@ -4,27 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:rota_eletronica/paginas/pagina_onboarding.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-main() async {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Rota Eletrônica',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const PaginaMinhaConta(),
-    );
-  }
-}
-
 class PaginaMinhaConta extends StatefulWidget {
   const PaginaMinhaConta({
     super.key,
@@ -54,33 +33,35 @@ class _PaginaMinhaContaState extends State<PaginaMinhaConta> {
           ),
         ),
       ]),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-              width: 150,
-              height: 150,
-              child: Image.network("lib/image/logo.png"),
-            ),
-            Container(
-              padding: const EdgeInsets.all(16),
-              child: const Column(
-                children: [
-                  SizedBox(height: 35),
-                  WidgetBotao(texto: 'Editar cadastro'),
-                  SizedBox(height: 10),
-                  WidgetBotao(texto: 'Ajuda'),
-                  SizedBox(height: 10),
-                  WidgetBotao(texto: 'Sobre o projeto'),
-                  SizedBox(height: 10),
-                  WidgetBotao(texto: 'Entre em contato conosco'),
-                  SizedBox(height: 50),
-                ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                width: 150,
+                height: 150,
+                child: Image.network("lib/image/logo.png"),
               ),
-            ),
-          ],
+              Container(
+                padding: const EdgeInsets.all(16),
+                child: const Column(
+                  children: [
+                    SizedBox(height: 35),
+                    WidgetBotao(texto: 'Editar cadastro'),
+                    SizedBox(height: 10),
+                    WidgetBotao(texto: 'Ajuda'),
+                    SizedBox(height: 10),
+                    WidgetBotao(texto: 'Sobre o projeto'),
+                    SizedBox(height: 10),
+                    WidgetBotao(texto: 'Entre em contato conosco'),
+                    SizedBox(height: 50),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
