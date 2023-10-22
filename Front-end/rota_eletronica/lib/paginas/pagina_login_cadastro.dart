@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:rota_eletronica/paginas/pagina_cadastro.dart';
+import 'package:rota_eletronica/testes/pagina_login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PaginaLoginCadastro extends StatefulWidget {
@@ -111,7 +112,8 @@ class Botoes extends StatelessWidget {
             ),
           ),
           onPressed: () {
-            //Navigator.pop(context);
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const PaginaLogin()));
           },
           child: const Text(
             "Login",
@@ -130,7 +132,7 @@ class Botoes extends StatelessWidget {
           onPressed: () async {
             final preferencia = await SharedPreferences.getInstance();
             preferencia.setBool('mostrarInicio', true);
-            Navigator.of(context).pushReplacement(MaterialPageRoute(
+            Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => const PaginaCadastro()));
           },
           child: const Text(

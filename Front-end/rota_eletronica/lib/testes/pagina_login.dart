@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:rota_eletronica/paginas/pagina_cadastro.dart';
 import 'package:rota_eletronica/paginas/pagina_principal.dart';
-import 'package:rota_eletronica/testes/pagina_login.dart';
 
-class PaginaCadastro extends StatefulWidget {
-  const PaginaCadastro({super.key});
+class PaginaLogin extends StatefulWidget {
+  const PaginaLogin({super.key});
 
   @override
-  State<PaginaCadastro> createState() => _PaginaCadastroState();
+  State<PaginaLogin> createState() => _PaginaLoginState();
 }
 
-class _PaginaCadastroState extends State<PaginaCadastro> {
+class _PaginaLoginState extends State<PaginaLogin> {
   final GlobalKey<FormState> _formKey = GlobalKey();
 
   final FocusNode _focoNoEmail = FocusNode();
   final FocusNode _focoNoSenha = FocusNode();
-  final FocusNode _focoNoConfirmarSenha = FocusNode();
-  final TextEditingController _controleNome = TextEditingController();
-  final TextEditingController _controleSobreNome = TextEditingController();
   final TextEditingController _controleEmail = TextEditingController();
   final TextEditingController _controleSenha = TextEditingController();
-  final TextEditingController _controleConfirmarSenha = TextEditingController();
-  final TextEditingController _controleCidade = TextEditingController();
 
   bool _esconderSenha = true;
 
@@ -50,54 +45,10 @@ class _PaginaCadastroState extends State<PaginaCadastro> {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  "Crie sua conta",
+                  "Que bom te ver\nnovamente!",
                   style: Theme.of(context).textTheme.headlineLarge,
                 ),
                 const SizedBox(height: 35),
-                TextFormField(
-                  controller: _controleNome,
-                  keyboardType: TextInputType.name,
-                  decoration: InputDecoration(
-                    labelText: "Nome",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  validator: (String? value) {
-                    if (value == null || value.isEmpty) {
-                      return "Por favor, digite seu nome.";
-                    } //else if (_boxAccounts.containsKey(value)) {return "Username is already registered.";}
-
-                    return null;
-                  },
-                  onEditingComplete: () => _focoNoEmail.requestFocus(),
-                ),
-                const SizedBox(height: 10),
-                TextFormField(
-                  controller: _controleSobreNome,
-                  keyboardType: TextInputType.name,
-                  decoration: InputDecoration(
-                    labelText: "Sobrenome",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  validator: (String? value) {
-                    if (value == null || value.isEmpty) {
-                      return "Por favor, digite seu sobrenome.";
-                    } //else if (_boxAccounts.containsKey(value)) {return "Username is already registered.";}
-
-                    return null;
-                  },
-                  onEditingComplete: () => _focoNoEmail.requestFocus(),
-                ),
-                const SizedBox(height: 10),
                 TextFormField(
                   controller: _controleEmail,
                   focusNode: _focoNoEmail,
@@ -120,28 +71,6 @@ class _PaginaCadastroState extends State<PaginaCadastro> {
                     return null;
                   },
                   onEditingComplete: () => _focoNoSenha.requestFocus(),
-                ),
-                const SizedBox(height: 10),
-                TextFormField(
-                  controller: _controleCidade,
-                  keyboardType: TextInputType.name,
-                  decoration: InputDecoration(
-                    labelText: "Cidade",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  validator: (String? value) {
-                    if (value == null || value.isEmpty) {
-                      return "Por favor, digite o nome da dua cidade.";
-                    } // usuário já registrado
-
-                    return null;
-                  },
-                  onEditingComplete: () => _focoNoEmail.requestFocus(),
                 ),
                 const SizedBox(height: 10),
                 TextFormField(
@@ -175,46 +104,9 @@ class _PaginaCadastroState extends State<PaginaCadastro> {
                     }
                     return null;
                   },
-                  onEditingComplete: () => _focoNoConfirmarSenha.requestFocus(),
-                ),
-                const SizedBox(height: 10),
-                TextFormField(
-                  controller: _controleConfirmarSenha,
-                  obscureText: _esconderSenha,
-                  focusNode: _focoNoConfirmarSenha,
-                  keyboardType: TextInputType.visiblePassword,
-                  decoration: InputDecoration(
-                    labelText: "Confirmar senha",
-                    suffixIcon: IconButton(
-                        onPressed: () {
-                          setState(() {
-                            _esconderSenha = !_esconderSenha;
-                          });
-                        },
-                        icon: _esconderSenha
-                            ? const Icon(Icons.visibility_outlined)
-                            : const Icon(Icons.visibility_off_outlined)),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  validator: (String? value) {
-                    if (value == null || value.isEmpty) {
-                      return "Por favor, digite sua senha.";
-                    } else if (value != _controleSenha.text) {
-                      return "A senha não corresponde.";
-                    }
-                    return null;
-                  },
                 ),
                 const SizedBox(height: 25),
-                const CheckBoxTermosECondicoes(
-                  text: 'Eu li e aceito os',
-                  link: 'Termos e Condições',
-                ),
+                const RecuperarSenha(),
                 const SizedBox(height: 25),
                 Column(
                   children: [
@@ -252,12 +144,12 @@ class _PaginaCadastroState extends State<PaginaCadastro> {
                             builder: (context) => const PaginaPrincipal()));
                       },
                       child: const Text(
-                        "Cadastrar",
+                        "Entrar",
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
                     const SizedBox(height: 25),
-                    const FazerLogin(),
+                    const FazerCadastro(),
                     const SizedBox(height: 50),
                   ],
                 ),
@@ -273,19 +165,14 @@ class _PaginaCadastroState extends State<PaginaCadastro> {
   void dispose() {
     _focoNoEmail.dispose();
     _focoNoSenha.dispose();
-    _focoNoConfirmarSenha.dispose();
-    _controleNome.dispose();
-    _controleSobreNome.dispose();
     _controleEmail.dispose();
-    _controleCidade.dispose();
     _controleSenha.dispose();
-    _controleConfirmarSenha.dispose();
     super.dispose();
   }
 }
 
-class FazerLogin extends StatelessWidget {
-  const FazerLogin({
+class RecuperarSenha extends StatelessWidget {
+  const RecuperarSenha({
     super.key,
   });
 
@@ -294,14 +181,37 @@ class FazerLogin extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text("Já possui conta?"),
+        const Text("Esqueceu a senha?"),
+        TextButton(
+          onPressed: () {}, //=> Navigator.pop(context),
+          child: const Text(
+            "Clique aqui",
+            style: TextStyle(color: Color(0xff004088)),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class FazerCadastro extends StatelessWidget {
+  const FazerCadastro({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text("Ainda não tem conta?"),
         TextButton(
           onPressed: () {
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const PaginaLogin()));
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const PaginaCadastro()));
           },
           child: const Text(
-            "Faça o login",
+            "Faça seu cadastro",
             style: TextStyle(color: Color(0xff004088)),
           ),
         ),
