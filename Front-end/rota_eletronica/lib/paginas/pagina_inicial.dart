@@ -48,7 +48,7 @@ class Promo extends StatelessWidget {
           children: [
             Opacity(
               opacity: .5,
-              child: Image.network('lib/image/logo.png', fit: BoxFit.cover),
+              child: Image.asset('lib/image/logo.png', fit: BoxFit.cover),
             ),
             //Image.network(''),
             const Align(
@@ -92,7 +92,7 @@ class Cabecalho extends StatelessWidget {
                   spreadRadius: 0,
                   color: Colors.grey.withOpacity(.25)),
             ]),
-            child: Image.network("lib/image/logo.png"),
+            child: Image.asset("lib/image/logo.png"),
           ),
           const Text(
             "Encontre o melhor\nlocal para seu\ndescarte",
@@ -355,7 +355,7 @@ class Card extends StatelessWidget {
           ),
           child: Column(
             children: [
-              Image.network(imageUrl, height: 70, fit: BoxFit.cover),
+              Image.asset(imageUrl, height: 70, fit: BoxFit.cover),
               const Spacer(),
               Text(text,
                   textAlign: TextAlign.center,

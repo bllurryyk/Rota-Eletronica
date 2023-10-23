@@ -195,7 +195,7 @@ class ConteudoOnboarding extends StatelessWidget {
       child: Column(
         children: [
           const Spacer(),
-          Image.network(imagem, height: 250),
+          Image.asset(imagem, height: 250),
           const Spacer(),
           Text(texto,
               textAlign: TextAlign.center,
