@@ -24,7 +24,7 @@ class _PaginaMapaState extends State<PaginaMapa> {
               margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
               width: 150,
               height: 150,
-              child: Image.network("lib/image/logo.png"),
+              child: Image.asset("lib/image/logo.png"),
             ),
           ],
         ),

@@ -42,7 +42,7 @@ class _PaginaCadastroState extends State<PaginaCadastro> {
             child: Column(
               children: [
                 const SizedBox(height: 100),
-                Image.network(
+                Image.asset(
                   "lib/image/logo.png",
                   width: 200,
                   height: 200,
