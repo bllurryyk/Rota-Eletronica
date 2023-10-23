@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:rota_eletronica/paginas/pagina_onboarding.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -21,6 +23,7 @@ class _PaginaMinhaContaState extends State<PaginaMinhaConta> {
           children: <Widget>[
             const Text(
               "Minha Conta",
+              style: TextStyle(color: Color(0xff8497FE)),
             ),
             Container(
               margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
@@ -35,7 +38,10 @@ class _PaginaMinhaContaState extends State<PaginaMinhaConta> {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
                       builder: (context) => const PaginaOnboarding()));
                 },
-                child: Text('Sair'))
+                child: const Text(
+                  'Sair',
+                  style: TextStyle(color: Color(0xff8497FE)),
+                ))
           ],
         ),
       ),

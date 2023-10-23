@@ -111,8 +111,8 @@ class Pesquisa extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          const EdgeInsets.only(top: 8.0, left: 25.0, right: 25.0, bottom: 8.0),
+      padding: const EdgeInsets.only(
+          top: 15.0, left: 25.0, right: 25.0, bottom: 15.0),
       child: Container(
         decoration: BoxDecoration(boxShadow: [
           BoxShadow(
@@ -157,7 +157,7 @@ class CabecalhoTags extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 25.0, right: 25.0),
+      padding: const EdgeInsets.only(top: 15.0, left: 25.0, right: 25.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -197,20 +197,22 @@ class ListaTags extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 25.0, right: 25.0, bottom: 15.0),
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        height: 175,
-        child: const Wrap(children: [
-          Tag('Pilha', Color(0xffFFFFFF)),
-          Tag('Geladeira', Color(0xffEFF2FF)),
-          Tag('Monitor', Color(0xffFFE9FF)),
-          Tag('Placa mãe', Color(0xffEFF2FF)),
-          Tag('Ventilador', Color(0xffEFF2FF)),
-          Tag('Televisão de tubo', Color(0xffFFFFFF)),
-          Tag('Mouse', Color(0xffFFE9FF))
-        ]),
+    return const Padding(
+      padding: EdgeInsets.only(top: 15.0, right: 25.0, bottom: 15.0),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Wrap(
+            crossAxisAlignment: WrapCrossAlignment.center,
+            verticalDirection: VerticalDirection.down,
+            children: [
+              Tag('Pilha', Color(0xffFFFFFF)),
+              Tag('Geladeira', Color(0xffEFF2FF)),
+              Tag('Monitor', Color(0xffFFE9FF)),
+              Tag('Placa mãe', Color(0xffEFF2FF)),
+              Tag('Ventilador', Color(0xffEFF2FF)),
+              Tag('Televisão de tubo', Color(0xffFFFFFF)),
+              Tag('Mouse', Color(0xffFFE9FF))
+            ]),
       ),
     );
   }
@@ -262,7 +264,7 @@ class CabecalhoCategorias extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 25.0, right: 25.0),
+      padding: const EdgeInsets.only(top: 15.0, left: 25.0, right: 25.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -303,7 +305,7 @@ class ListaCategorias extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 25.0, right: 25.0, bottom: 15.0),
+      padding: const EdgeInsets.only(top: 15.0, right: 25.0, bottom: 15.0),
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
         height: 175,
@@ -331,7 +333,7 @@ class Card extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 25.0, bottom: 15),
+      padding: const EdgeInsets.only(left: 25.0, bottom: 15.0),
       child: GestureDetector(
         onTap: () {
           //Navigator.of(context).pushNamed(route);

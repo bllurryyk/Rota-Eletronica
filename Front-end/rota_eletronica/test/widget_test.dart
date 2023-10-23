@@ -13,11 +13,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   final preferencia = await SharedPreferences.getInstance();
-  final mostrarHome = preferencia.getBool('mostrarHome') ?? false;
+  final mostrarInicio = preferencia.getBool('mostrarInicio') ?? false;
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(MyApp(
-      mostrarHome: mostrarHome,
+      mostrarInicio: mostrarInicio,
     ));
 
     // Verify that our counter starts at 0.
