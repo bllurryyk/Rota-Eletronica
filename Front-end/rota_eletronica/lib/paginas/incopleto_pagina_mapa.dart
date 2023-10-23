@@ -78,7 +78,7 @@ class _WidgetEmpresaState extends State<WidgetEmpresa> {
         ],
       ),
       child: ListTile(
-        leading: Image.network('lib/image/logo.png', height: 90, width: 90),
+        leading: Image.asset('assets/images/logo.png', height: 90, width: 90),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

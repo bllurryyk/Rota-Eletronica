@@ -26,7 +26,7 @@ class _PaginaMinhaContaState extends State<PaginaMinhaConta> {
                 margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                 width: 150,
                 height: 150,
-                child: Image.network("lib/image/logo.png"),
+                child: Image.asset("assets/images/logo.png"),
               ),
               Container(
                 padding: const EdgeInsets.all(16),
@@ -46,7 +46,7 @@ class _PaginaMinhaContaState extends State<PaginaMinhaConta> {
                         final preferencia =
                             await SharedPreferences.getInstance();
                         preferencia.setBool('mostrarHome', false);
-                        Navigator.of(context).pop(MaterialPageRoute(
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
                             builder: (context) => const PaginaOnboarding()));
                       },
                       style: ElevatedButton.styleFrom(

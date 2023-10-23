@@ -37,7 +37,7 @@ class _PaginaEmpresaState extends State<PaginaEmpresa> {
                     ),
                   ]),
                 ),
-                Center(child: Image.network("lib/image/capa.png"))
+                Center(child: Image.asset("assets/images/capa.png"))
               ]),
               const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

@@ -54,8 +54,8 @@ class Cabecalho extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Image.network(
-        "lib/image/capa.png",
+      child: Image.asset(
+        "assets/images/capa.png",
         width: 250,
         height: 250,
       ),
@@ -74,8 +74,8 @@ class Corpo extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image.network(
-          "lib/image/logo.png",
+        Image.asset(
+          "assets/images/logo.png",
           width: 50,
           height: 50,
         ),

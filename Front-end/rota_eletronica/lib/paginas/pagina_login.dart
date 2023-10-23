@@ -38,8 +38,8 @@ class _PaginaLoginState extends State<PaginaLogin> {
             child: Column(
               children: [
                 const SizedBox(height: 100),
-                Image.network(
-                  "lib/image/logo.png",
+                Image.asset(
+                  "assets/images/logo.png",
                   width: 200,
                   height: 200,
                 ),
