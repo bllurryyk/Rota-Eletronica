@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rota_eletronica/testes/pagina_empresa.dart';
+import 'package:rota_eletronica/paginas/pagina_empresa.dart';
 
 class PaginaMapa extends StatefulWidget {
   const PaginaMapa({
@@ -12,12 +12,6 @@ class PaginaMapa extends StatefulWidget {
 
 class _PaginaMapaState extends State<PaginaMapa> {
   List<Widget> empresas = [
-    const WidgetEmpresa(
-        nome: 'Eco TI Ambiental',
-        endereco: 'Av. Coelho e Campos, 784 - Centro, Aracaju - SE, 49060-000'),
-    const WidgetEmpresa(
-        nome: 'Eco TI Ambiental',
-        endereco: 'Av. Coelho e Campos, 784 - Centro, Aracaju - SE, 49060-000'),
     const WidgetEmpresa(
         nome: 'Eco TI Ambiental',
         endereco: 'Av. Coelho e Campos, 784 - Centro, Aracaju - SE, 49060-000'),

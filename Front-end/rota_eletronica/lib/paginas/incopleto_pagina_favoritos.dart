@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rota_eletronica/testes/pagina_empresa.dart';
+import 'package:rota_eletronica/paginas/pagina_empresa.dart';
 
 class PaginaFavoritos extends StatefulWidget {
   const PaginaFavoritos({
@@ -12,9 +12,6 @@ class PaginaFavoritos extends StatefulWidget {
 
 class _PaginaFavoritosState extends State<PaginaFavoritos> {
   List<Widget> empresas = [
-    const WidgetEmpresa(
-        nome: 'Eco TI Ambiental',
-        endereco: 'Av. Coelho e Campos, 784 - Centro, Aracaju - SE, 49060-000'),
     const WidgetEmpresa(
         nome: 'Eco TI Ambiental',
         endereco: 'Av. Coelho e Campos, 784 - Centro, Aracaju - SE, 49060-000'),
