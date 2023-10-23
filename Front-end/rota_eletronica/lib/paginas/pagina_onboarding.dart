@@ -122,7 +122,7 @@ class _PaginaOnboardingState extends State<PaginaOnboarding> {
                                 onPressed: () async {
                                   final preferencia =
                                       await SharedPreferences.getInstance();
-                                  preferencia.setBool('mostrarHome', true);
+                                  preferencia.setBool('mostrarInicio', true);
                                   Navigator.of(context).pushReplacement(
                                       MaterialPageRoute(
                                           builder: (context) =>

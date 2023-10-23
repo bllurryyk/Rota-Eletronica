@@ -45,7 +45,7 @@ class _PaginaMinhaContaState extends State<PaginaMinhaConta> {
                       onPressed: () async {
                         final preferencia =
                             await SharedPreferences.getInstance();
-                        preferencia.setBool('mostrarHome', false);
+                        preferencia.setBool('mostrarInicio', false);
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
                             builder: (context) => const PaginaOnboarding()));
                       },
