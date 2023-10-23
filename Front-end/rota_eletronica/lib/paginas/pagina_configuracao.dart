@@ -17,22 +17,6 @@ class _PaginaMinhaContaState extends State<PaginaMinhaConta> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(actions: [
-        const Spacer(),
-        IconButton(
-          padding: const EdgeInsets.all(16.0),
-          onPressed: () async {
-            final preferencia = await SharedPreferences.getInstance();
-            preferencia.setBool('mostrarHome', false);
-            Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) => const PaginaOnboarding()));
-          },
-          icon: const Icon(
-            Icons.exit_to_app,
-            color: Color(0xff004088),
-          ),
-        ),
-      ]),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -46,17 +30,50 @@ class _PaginaMinhaContaState extends State<PaginaMinhaConta> {
               ),
               Container(
                 padding: const EdgeInsets.all(16),
-                child: const Column(
+                child: Column(
                   children: [
-                    SizedBox(height: 35),
-                    WidgetBotao(texto: 'Editar cadastro'),
-                    SizedBox(height: 10),
-                    WidgetBotao(texto: 'Ajuda'),
-                    SizedBox(height: 10),
-                    WidgetBotao(texto: 'Sobre o projeto'),
-                    SizedBox(height: 10),
-                    WidgetBotao(texto: 'Entre em contato conosco'),
-                    SizedBox(height: 50),
+                    const SizedBox(height: 35),
+                    const WidgetBotao(texto: 'Editar cadastro'),
+                    const SizedBox(height: 10),
+                    const WidgetBotao(texto: 'Ajuda'),
+                    const SizedBox(height: 10),
+                    const WidgetBotao(texto: 'Sobre o projeto'),
+                    const SizedBox(height: 10),
+                    const WidgetBotao(texto: 'Entre em contato conosco'),
+                    const SizedBox(height: 10),
+                    ElevatedButton(
+                      onPressed: () async {
+                        final preferencia =
+                            await SharedPreferences.getInstance();
+                        preferencia.setBool('mostrarHome', false);
+                        Navigator.of(context).pop(MaterialPageRoute(
+                            builder: (context) => const PaginaOnboarding()));
+                      },
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: const Size.fromHeight(50),
+                        backgroundColor: const Color(0xffEFF2FF),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ),
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Text(
+                            'Sair',
+                            style: TextStyle(
+                              color: Color(0xff8497FE),
+                            ),
+                          ),
+                          Spacer(),
+                          Icon(
+                            Icons.exit_to_app,
+                            color: Color(0xff8497FE),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 50),
                   ],
                 ),
               ),

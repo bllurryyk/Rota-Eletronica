@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rota_eletronica/paginas/pagina_principal.dart';
-import 'package:rota_eletronica/testes/pagina_login.dart';
+import 'package:rota_eletronica/paginas/pagina_login.dart';
 
 class PaginaCadastro extends StatefulWidget {
   const PaginaCadastro({super.key});

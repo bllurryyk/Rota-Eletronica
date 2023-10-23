@@ -41,11 +41,13 @@ class _PaginaOnboardingState extends State<PaginaOnboarding> {
             child: ElevatedButton(
               onPressed: () => _controlePagina.jumpToPage(4),
               style: ElevatedButton.styleFrom(
-                shape: const StadiumBorder(),
                 backgroundColor: const Color(0xff8497FE),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5),
+                ),
               ),
               child: const Text(
-                'Skip',
+                'Pular',
                 style: TextStyle(
                   color: Color(0xFFffffff),
                 ),
@@ -97,15 +99,19 @@ class _PaginaOnboardingState extends State<PaginaOnboarding> {
                   ),
                   const Spacer(),
                   SizedBox(
-                    //height: 60,
-                    //width: 60,
                     child: primeiraPagina
-                        ? TextButton(
+                        ? ElevatedButton(
                             onPressed: () {
                               _controlePagina.nextPage(
                                   duration: const Duration(microseconds: 300),
                                   curve: Curves.ease);
                             },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color(0xffffffff),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                            ),
                             child: const Text(
                               'Iniciar',
                               style: TextStyle(color: Color(0xff8497FE)),
@@ -123,21 +129,29 @@ class _PaginaOnboardingState extends State<PaginaOnboarding> {
                                               const PaginaLoginCadastro()));
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  shape: const StadiumBorder(),
                                   backgroundColor: const Color(0xff8497FE),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
                                 ),
                                 child: const Text(
                                   'Vamos Começar?',
                                   style: TextStyle(color: Colors.white),
                                 ),
                               )
-                            : TextButton(
+                            : ElevatedButton(
                                 onPressed: () {
                                   _controlePagina.nextPage(
                                       duration:
                                           const Duration(microseconds: 300),
                                       curve: Curves.ease);
                                 },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xffffffff),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                ),
                                 child: const Text(
                                   'Próximo',
                                   style: TextStyle(color: Color(0xff8497FE)),
@@ -146,6 +160,7 @@ class _PaginaOnboardingState extends State<PaginaOnboarding> {
                   ),
                 ],
               ),
+              const SizedBox(height: 10),
             ],
           ),
         ),

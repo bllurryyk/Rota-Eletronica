@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:rota_eletronica/paginas/pagina_cadastro.dart';
-import 'package:rota_eletronica/testes/pagina_login.dart';
+import 'package:rota_eletronica/paginas/pagina_login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PaginaLoginCadastro extends StatefulWidget {
