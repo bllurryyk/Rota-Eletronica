@@ -111,7 +111,9 @@ class Botoes extends StatelessWidget {
               borderRadius: BorderRadius.circular(5),
             ),
           ),
-          onPressed: () {
+          onPressed: () async {
+            final preferencia = await SharedPreferences.getInstance();
+            preferencia.setBool('mostrarInicio', true);
             Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) => const PaginaLogin()));
           },

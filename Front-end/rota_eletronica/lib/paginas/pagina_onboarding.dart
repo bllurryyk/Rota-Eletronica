@@ -179,7 +179,7 @@ class Onboarding {
 
 final List<Onboarding> paginas = [
   Onboarding(
-      'Front-end/rota_eletronica/assets/images/capa.png',
+      'assets/images/capa.png',
       'Encontre pontos para descartar seu lixo eletrônico',
       'Localize pontos de coleta próximos em um piscar de olhos.\nSimplificando o descarte responsável.'),
   Onboarding(
