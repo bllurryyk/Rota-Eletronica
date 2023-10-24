@@ -48,9 +48,9 @@ class Promo extends StatelessWidget {
           children: [
             Opacity(
               opacity: .5,
-              child: Image.network('lib/image/logo.png', fit: BoxFit.cover),
+              child: Image.asset('assets/images/logo.png', fit: BoxFit.cover),
             ),
-            //Image.network(''),
+            //Image.asset(''),
             const Align(
               alignment: Alignment.topRight,
               child: Padding(
@@ -92,7 +92,7 @@ class Cabecalho extends StatelessWidget {
                   spreadRadius: 0,
                   color: Colors.grey.withOpacity(.25)),
             ]),
-            child: Image.network("lib/image/logo.png"),
+            child: Image.asset("assets/images/logo.png"),
           ),
           const Text(
             "Encontre o melhor\nlocal para seu\ndescarte",
@@ -312,9 +312,9 @@ class ListaCategorias extends StatelessWidget {
         child: ListView(
           scrollDirection: Axis.horizontal,
           children: const [
-            Card("Refrigeradores", "lib/image/minibar.png", "8 min away"),
-            Card("Computadores", "lib/image/comp.png", "12 min away"),
-            Card("Telas", "lib/image/tablet.png", "15 min away"),
+            Card("Refrigeradores", "assets/images/minibar.png"),
+            Card("Computadores", "assets/images/comp.png"),
+            Card("Telas", "assets/images/tablet.png"),
           ],
         ),
       ),
@@ -325,10 +325,8 @@ class ListaCategorias extends StatelessWidget {
 class Card extends StatelessWidget {
   final String text;
   final String imageUrl;
-  final String subtitle;
 
-  const Card(this.text, this.imageUrl, this.subtitle, {Key? key})
-      : super(key: key);
+  const Card(this.text, this.imageUrl, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -355,7 +353,7 @@ class Card extends StatelessWidget {
           ),
           child: Column(
             children: [
-              Image.network(imageUrl, height: 70, fit: BoxFit.cover),
+              Image.asset(imageUrl, height: 70, fit: BoxFit.cover),
               const Spacer(),
               Text(text,
                   textAlign: TextAlign.center,

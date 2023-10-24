@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rota_eletronica/paginas/pagina_principal.dart';
+import 'package:rota_eletronica/paginas/pagina_login.dart';
 
 class PaginaCadastro extends StatefulWidget {
   const PaginaCadastro({super.key});
@@ -42,8 +43,8 @@ class _PaginaCadastroState extends State<PaginaCadastro> {
             child: Column(
               children: [
                 const SizedBox(height: 100),
-                Image.network(
-                  "lib/image/logo.png",
+                Image.asset(
+                  "assets/images/logo.png",
                   width: 200,
                   height: 200,
                 ),
@@ -295,7 +296,10 @@ class FazerLogin extends StatelessWidget {
       children: [
         const Text("Já possui conta?"),
         TextButton(
-          onPressed: () {}, //=> Navigator.pop(context),
+          onPressed: () {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const PaginaLogin()));
+          },
           child: const Text(
             "Faça o login",
             style: TextStyle(color: Color(0xff004088)),

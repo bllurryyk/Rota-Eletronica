@@ -1,7 +1,7 @@
 // ignore_for_file: unused_field, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:rota_eletronica/testes/pagina_login_cadastro.dart';
+import 'package:rota_eletronica/paginas/pagina_login_cadastro.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -41,11 +41,13 @@ class _PaginaOnboardingState extends State<PaginaOnboarding> {
             child: ElevatedButton(
               onPressed: () => _controlePagina.jumpToPage(4),
               style: ElevatedButton.styleFrom(
-                shape: const StadiumBorder(),
                 backgroundColor: const Color(0xff8497FE),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5),
+                ),
               ),
               child: const Text(
-                'Skip',
+                'Pular',
                 style: TextStyle(
                   color: Color(0xFFffffff),
                 ),
@@ -97,15 +99,19 @@ class _PaginaOnboardingState extends State<PaginaOnboarding> {
                   ),
                   const Spacer(),
                   SizedBox(
-                    //height: 60,
-                    //width: 60,
                     child: primeiraPagina
-                        ? TextButton(
+                        ? ElevatedButton(
                             onPressed: () {
                               _controlePagina.nextPage(
                                   duration: const Duration(microseconds: 300),
                                   curve: Curves.ease);
                             },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color(0xffffffff),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                            ),
                             child: const Text(
                               'Iniciar',
                               style: TextStyle(color: Color(0xff8497FE)),
@@ -116,28 +122,36 @@ class _PaginaOnboardingState extends State<PaginaOnboarding> {
                                 onPressed: () async {
                                   final preferencia =
                                       await SharedPreferences.getInstance();
-                                  preferencia.setBool('mostrarHome', true);
+                                  preferencia.setBool('mostrarInicio', true);
                                   Navigator.of(context).pushReplacement(
                                       MaterialPageRoute(
                                           builder: (context) =>
                                               const PaginaLoginCadastro()));
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  shape: const StadiumBorder(),
                                   backgroundColor: const Color(0xff8497FE),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
                                 ),
                                 child: const Text(
                                   'Vamos Começar?',
                                   style: TextStyle(color: Colors.white),
                                 ),
                               )
-                            : TextButton(
+                            : ElevatedButton(
                                 onPressed: () {
                                   _controlePagina.nextPage(
                                       duration:
                                           const Duration(microseconds: 300),
                                       curve: Curves.ease);
                                 },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xffffffff),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                ),
                                 child: const Text(
                                   'Próximo',
                                   style: TextStyle(color: Color(0xff8497FE)),
@@ -146,6 +160,7 @@ class _PaginaOnboardingState extends State<PaginaOnboarding> {
                   ),
                 ],
               ),
+              const SizedBox(height: 10),
             ],
           ),
         ),
@@ -164,16 +179,18 @@ class Onboarding {
 
 final List<Onboarding> paginas = [
   Onboarding(
-      'lib/image/capa.png',
+      'assets/images/capa.png',
       'Encontre pontos para descartar seu lixo eletrônico',
       'Localize pontos de coleta próximos em um piscar de olhos.\nSimplificando o descarte responsável.'),
   Onboarding(
-      'lib/image/capa.png',
+      'assets/images/capa.png',
       'Leia guias explicativos para entender mais sobre o problema crescente do lixo eletrônico',
       'Eduque-se sobre o impacto do lixo eletrônico.\nSaiba por que o lixo eletrônico importa.'),
-  Onboarding('lib/image/capa.png', 'Favorite seus pontos de coleta favoritos',
+  Onboarding(
+      'assets/images/capa.png',
+      'Favorite seus pontos de coleta favoritos',
       'Marque seus lugares de reciclagem preferidos.\nAcesse facilmente seus pontos de coleta favoritos.'),
-  Onboarding('lib/image/capa.png', 'Ganhe pontos a cada descarte correto',
+  Onboarding('assets/images/capa.png', 'Ganhe pontos a cada descarte correto',
       'Recicle e seja recompensado.\nFaça a diferença e acumule pontos.'),
 ];
 
@@ -195,7 +212,7 @@ class ConteudoOnboarding extends StatelessWidget {
       child: Column(
         children: [
           const Spacer(),
-          Image.network(imagem, height: 250),
+          Image.asset(imagem, height: 250),
           const Spacer(),
           Text(texto,
               textAlign: TextAlign.center,
