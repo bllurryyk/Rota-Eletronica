@@ -19,21 +19,24 @@ class _PaginaEmpresaState extends State<PaginaEmpresa> {
           child: Column(
             children: [
               Stack(children: [
-                const Padding(
-                  padding: EdgeInsets.all(25.0),
+                Padding(
+                  padding: const EdgeInsets.all(25.0),
                   child: Row(children: [
                     WidgetBotaoCabecalho(
-                      icone: Icon(
-                        Icons.arrow_back,
-                        color: Color(0xff333333),
-                      ),
-                    ),
-                    Spacer(),
+                        icone: const Icon(
+                          Icons.arrow_back,
+                          color: Color(0xff333333),
+                        ),
+                        acao: () {
+                          Navigator.of(context).pop();
+                        }),
+                    const Spacer(),
                     WidgetBotaoCabecalho(
-                      icone: Icon(
+                      icone: const Icon(
                         Icons.favorite_outline,
                         color: Color(0xff333333),
                       ),
+                      acao: () {},
                     ),
                   ]),
                 ),
@@ -87,10 +90,12 @@ class _PaginaEmpresaState extends State<PaginaEmpresa> {
 
 class WidgetBotaoCabecalho extends StatefulWidget {
   final Icon icone;
+  final Function() acao;
 
   const WidgetBotaoCabecalho({
     super.key,
     required this.icone,
+    required this.acao,
   });
 
   @override
@@ -113,7 +118,7 @@ class _WidgetBotaoCabecalhoState extends State<WidgetBotaoCabecalho> {
         ],
       ),
       child: InkWell(
-        onTap: () {},
+        onTap: widget.acao,
         child: widget.icone,
       ),
     );
