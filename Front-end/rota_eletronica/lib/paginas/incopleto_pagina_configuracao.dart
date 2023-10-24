@@ -29,7 +29,7 @@ class _PaginaMinhaContaState extends State<PaginaMinhaConta> {
               margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
               width: 150,
               height: 150,
-              child: Image.asset("lib/image/logo.png"),
+              child: Image.network("lib/image/logo.png"),
             ),
             TextButton(
                 onPressed: () async {
