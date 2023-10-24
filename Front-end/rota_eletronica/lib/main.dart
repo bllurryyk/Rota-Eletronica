@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rota_eletronica/paginas/pagina_login_cadastro.dart';
 import 'package:rota_eletronica/paginas/pagina_onboarding.dart';
-import 'package:rota_eletronica/paginas/pagina_principal.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
@@ -24,7 +24,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: mostrarInicio ? const PaginaPrincipal() : const PaginaOnboarding(),
+      home: mostrarInicio
+          ? const PaginaLoginCadastro()
+          : const PaginaOnboarding(),
     );
   }
 }
