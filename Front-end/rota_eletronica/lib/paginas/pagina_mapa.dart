@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rota_eletronica/paginas/pagina_empresa.dart';
-import 'package:rota_eletronica/testes/busca.dart';
+import 'package:rota_eletronica/paginas/busca.dart';
 
 class PaginaMapa extends StatefulWidget {
   const PaginaMapa({
