@@ -297,8 +297,9 @@ class FazerLogin extends StatelessWidget {
         const Text("Já possui conta?"),
         TextButton(
           onPressed: () {
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const PaginaLogin()));
+            Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(builder: (context) => const PaginaLogin()),
+                (route) => route.isFirst);
           },
           child: const Text(
             "Faça o login",

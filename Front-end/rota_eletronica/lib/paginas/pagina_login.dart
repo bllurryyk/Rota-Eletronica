@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rota_eletronica/paginas/pagina_cadastro.dart';
+import 'package:rota_eletronica/paginas/pagina_onboarding.dart';
 import 'package:rota_eletronica/paginas/pagina_principal.dart';
 
 class PaginaLogin extends StatefulWidget {
@@ -140,8 +141,10 @@ class _PaginaLoginState extends State<PaginaLogin> {
                                       const PaginaPrincipal()));
                         }
                         */
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => const PaginaPrincipal()));
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                                builder: (context) => const PaginaPrincipal()),
+                            (route) => false);
                       },
                       child: const Text(
                         "Entrar",
@@ -207,8 +210,9 @@ class FazerCadastro extends StatelessWidget {
         const Text("Ainda não tem conta?"),
         TextButton(
           onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const PaginaCadastro()));
+            Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(builder: (context) => const PaginaCadastro()),
+                (route) => route.isFirst);
           },
           child: const Text(
             "Faça seu cadastro",
