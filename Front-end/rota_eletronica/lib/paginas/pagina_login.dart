@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:rota_eletronica/paginas/pagina_cadastro.dart';
-import 'package:rota_eletronica/paginas/pagina_onboarding.dart';
 import 'package:rota_eletronica/paginas/pagina_principal.dart';
 
 class PaginaLogin extends StatefulWidget {
