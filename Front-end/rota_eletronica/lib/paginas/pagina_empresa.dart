@@ -23,13 +23,14 @@ class _PaginaEmpresaState extends State<PaginaEmpresa> {
                   padding: const EdgeInsets.all(25.0),
                   child: Row(children: [
                     WidgetBotaoCabecalho(
-                        icone: const Icon(
-                          Icons.arrow_back,
-                          color: Color(0xff333333),
-                        ),
-                        acao: () {
-                          Navigator.of(context).pop();
-                        }),
+                      icone: const Icon(
+                        Icons.arrow_back,
+                        color: Color(0xff333333),
+                      ),
+                      acao: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
                     const Spacer(),
                     WidgetBotaoCabecalho(
                       icone: const Icon(

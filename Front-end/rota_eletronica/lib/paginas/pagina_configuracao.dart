@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
+import 'package:rota_eletronica/paginas/pagina_atualizar_cadastro.dart';
 import 'package:rota_eletronica/paginas/pagina_onboarding.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -16,8 +17,8 @@ class PaginaMinhaConta extends StatefulWidget {
 class _PaginaMinhaContaState extends State<PaginaMinhaConta> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
+    return SafeArea(
+      child: SingleChildScrollView(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -33,7 +34,36 @@ class _PaginaMinhaContaState extends State<PaginaMinhaConta> {
                 child: Column(
                   children: [
                     const SizedBox(height: 35),
-                    const WidgetBotao(texto: 'Editar cadastro'),
+                    ElevatedButton(
+                      onPressed: () async {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) =>
+                                const PaginaAtualizarCadastro()));
+                      },
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: const Size.fromHeight(50),
+                        backgroundColor: const Color(0xffEFF2FF),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ),
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Text(
+                            'Editar cadastro',
+                            style: TextStyle(
+                              color: Color(0xff8497FE),
+                            ),
+                          ),
+                          Spacer(),
+                          Icon(
+                            Icons.arrow_forward,
+                            color: Color(0xff8497FE),
+                          ),
+                        ],
+                      ),
+                    ),
                     const SizedBox(height: 10),
                     const WidgetBotao(texto: 'Ajuda'),
                     const SizedBox(height: 10),
@@ -46,7 +76,7 @@ class _PaginaMinhaContaState extends State<PaginaMinhaConta> {
                         final preferencia =
                             await SharedPreferences.getInstance();
                         preferencia.setBool('mostrarInicio', false);
-                        Navigator.of(context).pop(MaterialPageRoute(
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
                             builder: (context) => const PaginaOnboarding()));
                       },
                       style: ElevatedButton.styleFrom(

@@ -25,6 +25,13 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
     return Scaffold(
       body: _telas[_indiceAtual],
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: const Color(0xff2D3E9A),
+        selectedItemColor: const Color(0xffFFE9FF),
+        unselectedItemColor: const Color(0xffCCCCCC),
+        iconSize: 30.0,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        type: BottomNavigationBarType.fixed,
         currentIndex: _indiceAtual,
         onTap: (int newIndex) {
           setState(() {
