@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:rota_eletronica/paginas/pagina_configuracao.dart';
-import 'package:rota_eletronica/paginas/incopleto_pagina_favoritos.dart';
 import 'package:rota_eletronica/paginas/pagina_mapa.dart';
 import 'package:rota_eletronica/paginas/pagina_inicial.dart';
 
