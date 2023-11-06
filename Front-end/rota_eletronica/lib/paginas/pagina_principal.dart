@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rota_eletronica/paginas/pagina_configuracao.dart';
-import 'package:rota_eletronica/paginas/incopleto_pagina_favoritos.dart';
-import 'package:rota_eletronica/paginas/incopleto_pagina_mapa.dart';
+import 'package:rota_eletronica/paginas/pagina_favoritos.dart';
+import 'package:rota_eletronica/paginas/pagina_mapa.dart';
 import 'package:rota_eletronica/paginas/pagina_inicial.dart';
 
 class PaginaPrincipal extends StatefulWidget {
@@ -25,6 +25,13 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
     return Scaffold(
       body: _telas[_indiceAtual],
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: const Color(0xff2D3E9A),
+        selectedItemColor: const Color(0xffFFE9FF),
+        unselectedItemColor: const Color(0xffCCCCCC),
+        iconSize: 30.0,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        type: BottomNavigationBarType.fixed,
         currentIndex: _indiceAtual,
         onTap: (int newIndex) {
           setState(() {

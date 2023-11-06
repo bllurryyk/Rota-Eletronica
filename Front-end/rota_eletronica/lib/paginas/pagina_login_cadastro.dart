@@ -114,8 +114,9 @@ class Botoes extends StatelessWidget {
           onPressed: () async {
             final preferencia = await SharedPreferences.getInstance();
             preferencia.setBool('mostrarInicio', true);
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const PaginaLogin()));
+            Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(builder: (context) => const PaginaLogin()),
+                (route) => route.isFirst);
           },
           child: const Text(
             "Login",
@@ -134,8 +135,9 @@ class Botoes extends StatelessWidget {
           onPressed: () async {
             final preferencia = await SharedPreferences.getInstance();
             preferencia.setBool('mostrarInicio', true);
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const PaginaCadastro()));
+            Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(builder: (context) => const PaginaCadastro()),
+                (route) => route.isFirst);
           },
           child: const Text(
             "Cadastrar",
