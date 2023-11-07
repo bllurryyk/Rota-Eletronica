@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:rota_eletronica/paginas/pagina_principal.dart';
+import 'package:rota_eletronica/components/show_snackbar.dart';
+// import 'package:rota_eletronica/paginas/pagina_principal.dart';
 import 'package:rota_eletronica/paginas/pagina_login.dart';
+import 'package:rota_eletronica/services/flutter_fire_auth.dart';
 
 class PaginaCadastro extends StatefulWidget {
   const PaginaCadastro({super.key});
@@ -24,8 +26,32 @@ class _PaginaCadastroState extends State<PaginaCadastro> {
 
   bool _esconderSenha = true;
 
+  final FlutterFireAuth authService = FlutterFireAuth();
+
   @override
   Widget build(BuildContext context) {
+    // void _navigateToRetricted(UserData user) {
+    //   Navigator.of(context).pushReplacement(
+    //     MaterialPageRoute(builder: (context) => const PaginaPrincipal()),
+    //   );
+    // }
+
+    // void submit() async {
+    //   final name = _controleNome.text;
+    //   final secondname = _controleSobreNome.text;
+    //   final email = _controleEmail.text;
+    //   final password = _controleSenha.text;
+
+    //   // setState(() => _isLoading = true);
+
+    //   final user = await FlutterFireAuth(context)
+    //       .createUserWithEmailAndPassword(name, secondname, email, password);
+
+    //   if (user != null) {
+    //     _navigateToRetricted(user);
+    //   }
+    // }
+
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -248,10 +274,12 @@ class _PaginaCadastroState extends State<PaginaCadastro> {
                                       const PaginaPrincipal()));
                         }
                         */
-                        Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(
-                                builder: (context) => const PaginaPrincipal()),
-                            (route) => false);
+                        // Navigator.of(context).pushAndRemoveUntil(
+                        //     MaterialPageRoute(
+                        //         builder: (context) => const PaginaPrincipal()),
+                        //     (route) => false);
+                        // submit();
+                        botaoCriarClicado();
                       },
                       child: const Text(
                         "Cadastrar",
@@ -269,6 +297,29 @@ class _PaginaCadastroState extends State<PaginaCadastro> {
         ),
       ),
     );
+  }
+
+  botaoCriarClicado() {
+    String email = _controleEmail.text;
+    String senha = _controleSenha.text;
+    String nome = _controleNome.text;
+
+    authService
+        .cadastrarUsuario(nome: nome, email: email, senha: senha)
+        .then((String? erro) {
+      if (erro == null) {
+        showSnackBar(
+            context: context,
+            mensagem: "Conta cadastrada com sucesso.",
+            isErro: false);
+      } else {
+        showSnackBar(context: context, mensagem: erro);
+      }
+    });
+
+    // Navigator.of(context).pushAndRemoveUntil(
+    //     MaterialPageRoute(builder: (context) => const PaginaPrincipal()),
+    //     (route) => false);
   }
 
   @override

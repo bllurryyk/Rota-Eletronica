@@ -1,3 +1,5 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:rota_eletronica/paginas/pagina_login_cadastro.dart';
 import 'package:rota_eletronica/paginas/pagina_onboarding.dart';
@@ -7,6 +9,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final preferencia = await SharedPreferences.getInstance();
   final mostrarInicio = preferencia.getBool('mostrarInicio') ?? false;
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(MyApp(mostrarInicio: mostrarInicio));
 }
