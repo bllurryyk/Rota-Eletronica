@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rota_eletronica/paginas/pagina_configuracao.dart';
 import 'package:rota_eletronica/paginas/pagina_favoritos.dart';
+import 'package:rota_eletronica/paginas/pagina_informacoes_educacionais.dart';
 import 'package:rota_eletronica/paginas/pagina_mapa.dart';
 import 'package:rota_eletronica/paginas/pagina_inicial.dart';
 
@@ -15,6 +16,7 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
   int _indiceAtual = 0;
   final List<Widget> _telas = [
     const PaginaInicial(),
+    const PaginaInformacoesEducacional(),
     const PaginaMapa(),
     const PaginaFavoritos(),
     const PaginaMinhaConta()
@@ -42,6 +44,11 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
             label: "Página Inicial",
+            backgroundColor: Color(0xff2D3E9A),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.menu_book_outlined),
+            label: "Conteúdo Educacional",
             backgroundColor: Color(0xff2D3E9A),
           ),
           BottomNavigationBarItem(

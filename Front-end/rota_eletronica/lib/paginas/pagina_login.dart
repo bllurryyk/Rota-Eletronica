@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rota_eletronica/paginas/pagina_cadastro.dart';
 import 'package:rota_eletronica/paginas/pagina_principal.dart';
+import 'package:rota_eletronica/services/flutter_fire_auth.dart';
+import 'package:rota_eletronica/components/show_snackbar.dart';
 
 class PaginaLogin extends StatefulWidget {
   const PaginaLogin({super.key});
@@ -18,6 +20,8 @@ class _PaginaLoginState extends State<PaginaLogin> {
   final TextEditingController _controleSenha = TextEditingController();
 
   bool _esconderSenha = true;
+
+  final FlutterFireAuth authService = FlutterFireAuth();
 
   @override
   Widget build(BuildContext context) {
@@ -140,10 +144,7 @@ class _PaginaLoginState extends State<PaginaLogin> {
                                       const PaginaPrincipal()));
                         }
                         */
-                        Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(
-                                builder: (context) => const PaginaPrincipal()),
-                            (route) => false);
+                        botaoEntrarClicado();
                       },
                       child: const Text(
                         "Entrar",
@@ -161,6 +162,26 @@ class _PaginaLoginState extends State<PaginaLogin> {
         ),
       ),
     );
+  }
+
+  botaoEntrarClicado() {
+    String email = _controleEmail.text;
+    String senha = _controleSenha.text;
+
+    authService.loginUsuario(email: email, senha: senha).then((String? erro) {
+      if (erro == null) {
+        showSnackBar(
+            context: context,
+            mensagem: "Login efetuado com sucesso.",
+            isErro: false);
+      } else {
+        showSnackBar(context: context, mensagem: erro);
+      }
+    });
+
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => const PaginaPrincipal()),
+        (route) => false);
   }
 
   @override
