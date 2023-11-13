@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:rota_eletronica/paginas/pagina_cadastro.dart';
-import 'package:rota_eletronica/paginas/pagina_principal.dart';
-import 'package:rota_eletronica/paginas/pagina_recuperacao_senha.dart';
-import 'package:rota_eletronica/services/flutter_fire_auth.dart';
 import 'package:rota_eletronica/components/show_snackbar.dart';
+import 'package:rota_eletronica/services/flutter_fire_auth.dart';
+import 'package:rota_eletronica/paginas/pagina_login_ponto_de_coleta.dart';
 
-class PaginaLogin extends StatefulWidget {
-  const PaginaLogin({super.key});
+class PaginaCadastroPontoDeColeta extends StatefulWidget {
+  const PaginaCadastroPontoDeColeta({super.key});
 
   @override
-  State<PaginaLogin> createState() => _PaginaLoginState();
+  State<PaginaCadastroPontoDeColeta> createState() =>
+      _PaginaCadastroPontoDeColetaState();
 }
 
-class _PaginaLoginState extends State<PaginaLogin> {
+class _PaginaCadastroPontoDeColetaState
+    extends State<PaginaCadastroPontoDeColeta> {
   final GlobalKey<FormState> _formKey = GlobalKey();
 
   final FocusNode _focoNoEmail = FocusNode();
   final FocusNode _focoNoSenha = FocusNode();
+  final FocusNode _focoNoConfirmarSenha = FocusNode();
+  final TextEditingController _controleNome = TextEditingController();
   final TextEditingController _controleEmail = TextEditingController();
   final TextEditingController _controleSenha = TextEditingController();
+  final TextEditingController _controleConfirmarSenha = TextEditingController();
 
   bool _esconderSenha = true;
 
@@ -26,6 +29,28 @@ class _PaginaLoginState extends State<PaginaLogin> {
 
   @override
   Widget build(BuildContext context) {
+    // void _navigateToRetricted(UserData user) {
+    //   Navigator.of(context).pushReplacement(
+    //     MaterialPageRoute(builder: (context) => const PaginaPrincipal()),
+    //   );
+    // }
+
+    // void submit() async {
+    //   final name = _controleNome.text;
+    //   final secondname = _controleSobreNome.text;
+    //   final email = _controleEmail.text;
+    //   final password = _controleSenha.text;
+
+    //   // setState(() => _isLoading = true);
+
+    //   final user = await FlutterFireAuth(context)
+    //       .createUserWithEmailAndPassword(name, secondname, email, password);
+
+    //   if (user != null) {
+    //     _navigateToRetricted(user);
+    //   }
+    // }
+
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -50,10 +75,32 @@ class _PaginaLoginState extends State<PaginaLogin> {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  "Que bom te ver\nnovamente!",
+                  "Crie sua conta",
                   style: Theme.of(context).textTheme.headlineLarge,
                 ),
                 const SizedBox(height: 35),
+                TextFormField(
+                  controller: _controleNome,
+                  keyboardType: TextInputType.name,
+                  decoration: InputDecoration(
+                    labelText: "Nome",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return "Por favor, digite seu nome.";
+                    } //else if (_boxAccounts.containsKey(value)) {return "Username is already registered.";}
+
+                    return null;
+                  },
+                  onEditingComplete: () => _focoNoEmail.requestFocus(),
+                ),
+                const SizedBox(height: 10),
                 TextFormField(
                   controller: _controleEmail,
                   focusNode: _focoNoEmail,
@@ -109,9 +156,46 @@ class _PaginaLoginState extends State<PaginaLogin> {
                     }
                     return null;
                   },
+                  onEditingComplete: () => _focoNoConfirmarSenha.requestFocus(),
+                ),
+                const SizedBox(height: 10),
+                TextFormField(
+                  controller: _controleConfirmarSenha,
+                  obscureText: _esconderSenha,
+                  focusNode: _focoNoConfirmarSenha,
+                  keyboardType: TextInputType.visiblePassword,
+                  decoration: InputDecoration(
+                    labelText: "Confirmar senha",
+                    suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            _esconderSenha = !_esconderSenha;
+                          });
+                        },
+                        icon: _esconderSenha
+                            ? const Icon(Icons.visibility_outlined)
+                            : const Icon(Icons.visibility_off_outlined)),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return "Por favor, digite sua senha.";
+                    } else if (value != _controleSenha.text) {
+                      return "A senha não corresponde.";
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 25),
-                const RecuperarSenha(),
+                const CheckBoxTermosECondicoes(
+                  text: 'Eu li e aceito os',
+                  link: 'Termos e Condições',
+                ),
                 const SizedBox(height: 25),
                 Column(
                   children: [
@@ -145,15 +229,20 @@ class _PaginaLoginState extends State<PaginaLogin> {
                                       const PaginaPrincipal()));
                         }
                         */
-                        botaoEntrarClicado();
+                        // Navigator.of(context).pushAndRemoveUntil(
+                        //     MaterialPageRoute(
+                        //         builder: (context) => const PaginaPrincipal()),
+                        //     (route) => false);
+                        // submit();
+                        botaoCriarClicado();
                       },
                       child: const Text(
-                        "Entrar",
+                        "Cadastrar",
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
                     const SizedBox(height: 25),
-                    const FazerCadastro(),
+                    const FazerLogin(),
                     const SizedBox(height: 50),
                   ],
                 ),
@@ -165,38 +254,44 @@ class _PaginaLoginState extends State<PaginaLogin> {
     );
   }
 
-  botaoEntrarClicado() {
+  botaoCriarClicado() {
     String email = _controleEmail.text;
     String senha = _controleSenha.text;
+    String nome = _controleNome.text;
 
-    authService.loginUsuario(email: email, senha: senha).then((String? erro) {
+    authService
+        .cadastrarUsuario(nome: nome, email: email, senha: senha)
+        .then((String? erro) {
       if (erro == null) {
         showSnackBar(
             context: context,
-            mensagem: "Login efetuado com sucesso.",
+            mensagem: "Conta cadastrada com sucesso.",
             isErro: false);
       } else {
         showSnackBar(context: context, mensagem: erro);
       }
     });
 
-    Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => const PaginaPrincipal()),
-        (route) => false);
+    // Navigator.of(context).pushAndRemoveUntil(
+    //     MaterialPageRoute(builder: (context) => const PaginaPrincipal()),
+    //     (route) => false);
   }
 
   @override
   void dispose() {
     _focoNoEmail.dispose();
     _focoNoSenha.dispose();
+    _focoNoConfirmarSenha.dispose();
+    _controleNome.dispose();
     _controleEmail.dispose();
     _controleSenha.dispose();
+    _controleConfirmarSenha.dispose();
     super.dispose();
   }
 }
 
-class RecuperarSenha extends StatelessWidget {
-  const RecuperarSenha({
+class FazerLogin extends StatelessWidget {
+  const FazerLogin({
     super.key,
   });
 
@@ -205,43 +300,16 @@ class RecuperarSenha extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text("Esqueceu a senha?"),
+        const Text("Já possui conta?"),
         TextButton(
           onPressed: () {
             Navigator.of(context).pushAndRemoveUntil(
                 MaterialPageRoute(
-                    builder: (context) => const PaginaRecuperacaoSenha()),
-                (route) => false);
-          }, //=> Navigator.pop(context),
-          child: const Text(
-            "Clique aqui",
-            style: TextStyle(color: Color(0xff004088)),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class FazerCadastro extends StatelessWidget {
-  const FazerCadastro({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text("Ainda não tem conta?"),
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(builder: (context) => const PaginaCadastro()),
+                    builder: (context) => const PaginaLoginPontoDeColeta()),
                 (route) => route.isFirst);
           },
           child: const Text(
-            "Faça seu cadastro",
+            "Faça o login",
             style: TextStyle(color: Color(0xff004088)),
           ),
         ),

@@ -1,18 +1,20 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:rota_eletronica/paginas/pagina_cadastro.dart';
-import 'package:rota_eletronica/paginas/pagina_login.dart';
+import 'package:rota_eletronica/paginas/pagina_login_usuario.dart';
+import 'package:rota_eletronica/paginas/pagina_cadastro_ponto_de_coleta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class PaginaLoginCadastro extends StatefulWidget {
-  const PaginaLoginCadastro({super.key});
+class PaginaLoginCadastroPontoDeColeta extends StatefulWidget {
+  const PaginaLoginCadastroPontoDeColeta({super.key});
 
   @override
-  State<PaginaLoginCadastro> createState() => _PaginaLoginCadastroState();
+  State<PaginaLoginCadastroPontoDeColeta> createState() =>
+      _PaginaLoginCadastroPontoDeColetaState();
 }
 
-class _PaginaLoginCadastroState extends State<PaginaLoginCadastro> {
+class _PaginaLoginCadastroPontoDeColetaState
+    extends State<PaginaLoginCadastroPontoDeColeta> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,7 +88,7 @@ class Corpo extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         Text(
-          "Encontre os melhores lugares\npara descartar seu lixo eletrônico",
+          "Faça login ou cadastre-se para atualizar informações e receber descartes responsáveis",
           style: Theme.of(context).textTheme.bodySmall,
         ),
       ],
@@ -115,7 +117,8 @@ class Botoes extends StatelessWidget {
             final preferencia = await SharedPreferences.getInstance();
             preferencia.setBool('mostrarInicio', true);
             Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(builder: (context) => const PaginaLogin()),
+                MaterialPageRoute(
+                    builder: (context) => const PaginaLoginUsuario()),
                 (route) => route.isFirst);
           },
           child: const Text(
@@ -136,7 +139,8 @@ class Botoes extends StatelessWidget {
             final preferencia = await SharedPreferences.getInstance();
             preferencia.setBool('mostrarInicio', true);
             Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(builder: (context) => const PaginaCadastro()),
+                MaterialPageRoute(
+                    builder: (context) => const PaginaCadastroPontoDeColeta()),
                 (route) => route.isFirst);
           },
           child: const Text(
