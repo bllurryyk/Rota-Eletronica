@@ -179,18 +179,20 @@ class Onboarding {
 
 final List<Onboarding> paginas = [
   Onboarding(
-      'assets/images/capa.png',
+      'assets/images/2008301012.png',
       'Encontre pontos para descartar seu lixo eletrônico',
       'Localize pontos de coleta próximos em um piscar de olhos.\nSimplificando o descarte responsável.'),
   Onboarding(
-      'assets/images/capa.png',
+      'assets/images/6294647.png',
       'Leia guias explicativos para entender mais sobre o problema crescente do lixo eletrônico',
       'Eduque-se sobre o impacto do lixo eletrônico.\nSaiba por que o lixo eletrônico importa.'),
   Onboarding(
-      'assets/images/capa.png',
+      'assets/images/11593650.png',
       'Favorite seus pontos de coleta favoritos',
       'Marque seus lugares de reciclagem preferidos.\nAcesse facilmente seus pontos de coleta favoritos.'),
-  Onboarding('assets/images/capa.png', 'Ganhe pontos a cada descarte correto',
+  Onboarding(
+      'assets/images/8711565.png',
+      'Ganhe pontos a cada descarte correto',
       'Recicle e seja recompensado.\nFaça a diferença e acumule pontos.'),
 ];
 
