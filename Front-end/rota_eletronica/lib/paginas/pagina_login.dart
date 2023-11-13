@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rota_eletronica/paginas/pagina_cadastro.dart';
 import 'package:rota_eletronica/paginas/pagina_principal.dart';
+import 'package:rota_eletronica/paginas/pagina_recuperacao_senha.dart';
 import 'package:rota_eletronica/services/flutter_fire_auth.dart';
 import 'package:rota_eletronica/components/show_snackbar.dart';
 
@@ -206,7 +207,12 @@ class RecuperarSenha extends StatelessWidget {
       children: [
         const Text("Esqueceu a senha?"),
         TextButton(
-          onPressed: () {}, //=> Navigator.pop(context),
+          onPressed: () {
+            Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                    builder: (context) => const PaginaRecuperacaoSenha()),
+                (route) => false);
+          }, //=> Navigator.pop(context),
           child: const Text(
             "Clique aqui",
             style: TextStyle(color: Color(0xff004088)),
