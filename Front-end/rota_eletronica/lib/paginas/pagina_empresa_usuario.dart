@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:rota_eletronica/paginas/pagina_login_cadastro_usuario.dart';
-import 'package:rota_eletronica/testes/pagina_login_cadastro_ponto_de_coleta.dart';
+import 'package:rota_eletronica/paginas/pagina_login_cadastro_ponto_de_coleta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PaginaPontoDeColetaUsuario extends StatefulWidget {
