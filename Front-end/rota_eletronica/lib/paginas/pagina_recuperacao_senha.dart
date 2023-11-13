@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rota_eletronica/paginas/pagina_cadastro.dart';
-import 'package:rota_eletronica/paginas/pagina_principal.dart';
+import 'package:rota_eletronica/paginas/pagina_cadastro_usuario.dart';
 import 'package:rota_eletronica/services/flutter_fire_auth.dart';
 import 'package:rota_eletronica/components/show_snackbar.dart';
 
@@ -162,7 +161,7 @@ class FazerCadastro extends StatelessWidget {
         TextButton(
           onPressed: () {
             Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(builder: (context) => const PaginaCadastro()),
+                MaterialPageRoute(builder: (context) => const PaginaCadastroUsuario()),
                 (route) => route.isFirst);
           },
           child: const Text(
