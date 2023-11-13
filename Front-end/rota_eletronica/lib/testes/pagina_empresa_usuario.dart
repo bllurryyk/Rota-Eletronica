@@ -1,18 +1,20 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:rota_eletronica/paginas/pagina_cadastro.dart';
-import 'package:rota_eletronica/paginas/pagina_login.dart';
+import 'package:rota_eletronica/paginas/pagina_login_cadastro_usuario.dart';
+import 'package:rota_eletronica/testes/pagina_login_cadastro_ponto_de_coleta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class PaginaLoginCadastro extends StatefulWidget {
-  const PaginaLoginCadastro({super.key});
+class PaginaPontoDeColetaUsuario extends StatefulWidget {
+  const PaginaPontoDeColetaUsuario({super.key});
 
   @override
-  State<PaginaLoginCadastro> createState() => _PaginaLoginCadastroState();
+  State<PaginaPontoDeColetaUsuario> createState() =>
+      _PaginaPontoDeColetaUsuarioState();
 }
 
-class _PaginaLoginCadastroState extends State<PaginaLoginCadastro> {
+class _PaginaPontoDeColetaUsuarioState
+    extends State<PaginaPontoDeColetaUsuario> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,13 +83,8 @@ class Corpo extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         Text(
-          "Rota Eletrônica",
-          style: Theme.of(context).textTheme.headlineLarge,
-        ),
-        const SizedBox(height: 10),
-        Text(
-          "Encontre os melhores lugares\npara descartar seu lixo eletrônico",
-          style: Theme.of(context).textTheme.bodySmall,
+          "Você pretende utilizar como usuário ou como local de coleta?",
+          style: Theme.of(context).textTheme.headlineMedium,
         ),
       ],
     );
@@ -115,11 +112,13 @@ class Botoes extends StatelessWidget {
             final preferencia = await SharedPreferences.getInstance();
             preferencia.setBool('mostrarInicio', true);
             Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(builder: (context) => const PaginaLogin()),
+                MaterialPageRoute(
+                    builder: (context) =>
+                        const PaginaLoginCadastroPontoDeColeta()),
                 (route) => route.isFirst);
           },
           child: const Text(
-            "Login",
+            "Local de coleta",
             style: TextStyle(color: Colors.white),
           ),
         ),
@@ -127,7 +126,7 @@ class Botoes extends StatelessWidget {
         ElevatedButton(
           style: ElevatedButton.styleFrom(
             minimumSize: const Size.fromHeight(50),
-            backgroundColor: const Color(0xffEFF2FF),
+            backgroundColor: const Color(0xff8497FE),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5),
             ),
@@ -136,12 +135,13 @@ class Botoes extends StatelessWidget {
             final preferencia = await SharedPreferences.getInstance();
             preferencia.setBool('mostrarInicio', true);
             Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(builder: (context) => const PaginaCadastro()),
+                MaterialPageRoute(
+                    builder: (context) => const PaginaLoginCadastroUsuario()),
                 (route) => route.isFirst);
           },
           child: const Text(
-            "Cadastrar",
-            style: TextStyle(color: Color(0xff8497FE)),
+            "Usuário",
+            style: TextStyle(color: Colors.white),
           ),
         ),
       ],

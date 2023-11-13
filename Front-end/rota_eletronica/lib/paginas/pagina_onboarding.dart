@@ -1,7 +1,7 @@
 // ignore_for_file: unused_field, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:rota_eletronica/paginas/pagina_login_cadastro.dart';
+import 'package:rota_eletronica/testes/pagina_empresa_usuario.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -126,7 +126,7 @@ class _PaginaOnboardingState extends State<PaginaOnboarding> {
                                   Navigator.of(context).pushReplacement(
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const PaginaLoginCadastro()));
+                                              const PaginaPontoDeColetaUsuario()));
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: const Color(0xff8497FE),
