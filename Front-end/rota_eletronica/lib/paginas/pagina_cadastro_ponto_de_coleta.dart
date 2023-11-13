@@ -1,28 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:rota_eletronica/components/show_snackbar.dart';
-// import 'package:rota_eletronica/paginas/pagina_principal.dart';
-import 'package:rota_eletronica/paginas/pagina_login.dart';
 import 'package:rota_eletronica/services/flutter_fire_auth.dart';
+import 'package:rota_eletronica/paginas/pagina_login_ponto_de_coleta.dart';
 
-class PaginaCadastro extends StatefulWidget {
-  const PaginaCadastro({super.key});
+class PaginaCadastroPontoDeColeta extends StatefulWidget {
+  const PaginaCadastroPontoDeColeta({super.key});
 
   @override
-  State<PaginaCadastro> createState() => _PaginaCadastroState();
+  State<PaginaCadastroPontoDeColeta> createState() =>
+      _PaginaCadastroPontoDeColetaState();
 }
 
-class _PaginaCadastroState extends State<PaginaCadastro> {
+class _PaginaCadastroPontoDeColetaState
+    extends State<PaginaCadastroPontoDeColeta> {
   final GlobalKey<FormState> _formKey = GlobalKey();
 
   final FocusNode _focoNoEmail = FocusNode();
   final FocusNode _focoNoSenha = FocusNode();
   final FocusNode _focoNoConfirmarSenha = FocusNode();
   final TextEditingController _controleNome = TextEditingController();
-  final TextEditingController _controleSobreNome = TextEditingController();
   final TextEditingController _controleEmail = TextEditingController();
   final TextEditingController _controleSenha = TextEditingController();
   final TextEditingController _controleConfirmarSenha = TextEditingController();
-  final TextEditingController _controleCidade = TextEditingController();
 
   bool _esconderSenha = true;
 
@@ -103,28 +102,6 @@ class _PaginaCadastroState extends State<PaginaCadastro> {
                 ),
                 const SizedBox(height: 10),
                 TextFormField(
-                  controller: _controleSobreNome,
-                  keyboardType: TextInputType.name,
-                  decoration: InputDecoration(
-                    labelText: "Sobrenome",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  validator: (String? value) {
-                    if (value == null || value.isEmpty) {
-                      return "Por favor, digite seu sobrenome.";
-                    } //else if (_boxAccounts.containsKey(value)) {return "Username is already registered.";}
-
-                    return null;
-                  },
-                  onEditingComplete: () => _focoNoEmail.requestFocus(),
-                ),
-                const SizedBox(height: 10),
-                TextFormField(
                   controller: _controleEmail,
                   focusNode: _focoNoEmail,
                   keyboardType: TextInputType.emailAddress,
@@ -146,28 +123,6 @@ class _PaginaCadastroState extends State<PaginaCadastro> {
                     return null;
                   },
                   onEditingComplete: () => _focoNoSenha.requestFocus(),
-                ),
-                const SizedBox(height: 10),
-                TextFormField(
-                  controller: _controleCidade,
-                  keyboardType: TextInputType.name,
-                  decoration: InputDecoration(
-                    labelText: "Cidade",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  validator: (String? value) {
-                    if (value == null || value.isEmpty) {
-                      return "Por favor, digite o nome da dua cidade.";
-                    } // usuário já registrado
-
-                    return null;
-                  },
-                  onEditingComplete: () => _focoNoEmail.requestFocus(),
                 ),
                 const SizedBox(height: 10),
                 TextFormField(
@@ -328,9 +283,7 @@ class _PaginaCadastroState extends State<PaginaCadastro> {
     _focoNoSenha.dispose();
     _focoNoConfirmarSenha.dispose();
     _controleNome.dispose();
-    _controleSobreNome.dispose();
     _controleEmail.dispose();
-    _controleCidade.dispose();
     _controleSenha.dispose();
     _controleConfirmarSenha.dispose();
     super.dispose();
@@ -351,7 +304,8 @@ class FazerLogin extends StatelessWidget {
         TextButton(
           onPressed: () {
             Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(builder: (context) => const PaginaLogin()),
+                MaterialPageRoute(
+                    builder: (context) => const PaginaLoginPontoDeColeta()),
                 (route) => route.isFirst);
           },
           child: const Text(

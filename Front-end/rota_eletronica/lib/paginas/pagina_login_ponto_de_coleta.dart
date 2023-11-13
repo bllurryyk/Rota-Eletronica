@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:rota_eletronica/paginas/pagina_cadastro.dart';
 import 'package:rota_eletronica/paginas/pagina_principal.dart';
 import 'package:rota_eletronica/services/flutter_fire_auth.dart';
 import 'package:rota_eletronica/components/show_snackbar.dart';
+import 'package:rota_eletronica/paginas/pagina_cadastro_ponto_de_coleta.dart';
 
-class PaginaLogin extends StatefulWidget {
-  const PaginaLogin({super.key});
+class PaginaLoginPontoDeColeta extends StatefulWidget {
+  const PaginaLoginPontoDeColeta({super.key});
 
   @override
-  State<PaginaLogin> createState() => _PaginaLoginState();
+  State<PaginaLoginPontoDeColeta> createState() =>
+      _PaginaLoginPontoDeColetaState();
 }
 
-class _PaginaLoginState extends State<PaginaLogin> {
+class _PaginaLoginPontoDeColetaState extends State<PaginaLoginPontoDeColeta> {
   final GlobalKey<FormState> _formKey = GlobalKey();
 
   final FocusNode _focoNoEmail = FocusNode();
@@ -231,7 +232,8 @@ class FazerCadastro extends StatelessWidget {
         TextButton(
           onPressed: () {
             Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(builder: (context) => const PaginaCadastro()),
+                MaterialPageRoute(
+                    builder: (context) => const PaginaCadastroPontoDeColeta()),
                 (route) => route.isFirst);
           },
           child: const Text(
