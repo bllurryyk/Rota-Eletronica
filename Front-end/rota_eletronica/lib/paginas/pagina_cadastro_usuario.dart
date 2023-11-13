@@ -102,28 +102,6 @@ class _PaginaCadastroUsuarioState extends State<PaginaCadastroUsuario> {
                 ),
                 const SizedBox(height: 10),
                 TextFormField(
-                  controller: _controleSobreNome,
-                  keyboardType: TextInputType.name,
-                  decoration: InputDecoration(
-                    labelText: "Sobrenome",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  validator: (String? value) {
-                    if (value == null || value.isEmpty) {
-                      return "Por favor, digite seu sobrenome.";
-                    } //else if (_boxAccounts.containsKey(value)) {return "Username is already registered.";}
-
-                    return null;
-                  },
-                  onEditingComplete: () => _focoNoEmail.requestFocus(),
-                ),
-                const SizedBox(height: 10),
-                TextFormField(
                   controller: _controleEmail,
                   focusNode: _focoNoEmail,
                   keyboardType: TextInputType.emailAddress,
@@ -145,28 +123,6 @@ class _PaginaCadastroUsuarioState extends State<PaginaCadastroUsuario> {
                     return null;
                   },
                   onEditingComplete: () => _focoNoSenha.requestFocus(),
-                ),
-                const SizedBox(height: 10),
-                TextFormField(
-                  controller: _controleCidade,
-                  keyboardType: TextInputType.name,
-                  decoration: InputDecoration(
-                    labelText: "Cidade",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  validator: (String? value) {
-                    if (value == null || value.isEmpty) {
-                      return "Por favor, digite o nome da dua cidade.";
-                    } // usuário já registrado
-
-                    return null;
-                  },
-                  onEditingComplete: () => _focoNoEmail.requestFocus(),
                 ),
                 const SizedBox(height: 10),
                 TextFormField(

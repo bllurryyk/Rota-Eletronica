@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:rota_eletronica/paginas/pagina_cadastro_usuario.dart';
+import 'package:rota_eletronica/paginas/pagina_cadastro.dart';
 import 'package:rota_eletronica/paginas/pagina_principal.dart';
-import 'package:rota_eletronica/paginas/pagina_recuperacao_senha.dart';
 import 'package:rota_eletronica/services/flutter_fire_auth.dart';
 import 'package:rota_eletronica/components/show_snackbar.dart';
 
-class PaginaLoginUsuario extends StatefulWidget {
-  const PaginaLoginUsuario({super.key});
+class PaginaRecuperacaoSenha extends StatefulWidget {
+  const PaginaRecuperacaoSenha({super.key});
 
   @override
-  State<PaginaLoginUsuario> createState() => _PaginaLoginUsuarioState();
+  State<PaginaRecuperacaoSenha> createState() => _PaginaRecuperacaoSenhaState();
 }
 
-class _PaginaLoginUsuarioState extends State<PaginaLoginUsuario> {
+class _PaginaRecuperacaoSenhaState extends State<PaginaRecuperacaoSenha> {
   final GlobalKey<FormState> _formKey = GlobalKey();
 
   final FocusNode _focoNoEmail = FocusNode();
-  final FocusNode _focoNoSenha = FocusNode();
   final TextEditingController _controleEmail = TextEditingController();
-  final TextEditingController _controleSenha = TextEditingController();
-
-  bool _esconderSenha = true;
 
   final FlutterFireAuth authService = FlutterFireAuth();
 
@@ -50,7 +45,7 @@ class _PaginaLoginUsuarioState extends State<PaginaLoginUsuario> {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  "Que bom te ver\nnovamente!",
+                  "Recuperação da senha",
                   style: Theme.of(context).textTheme.headlineLarge,
                 ),
                 const SizedBox(height: 35),
@@ -75,43 +70,8 @@ class _PaginaLoginUsuarioState extends State<PaginaLoginUsuario> {
                     }
                     return null;
                   },
-                  onEditingComplete: () => _focoNoSenha.requestFocus(),
-                ),
-                const SizedBox(height: 10),
-                TextFormField(
-                  controller: _controleSenha,
-                  obscureText: _esconderSenha,
-                  focusNode: _focoNoSenha,
-                  keyboardType: TextInputType.visiblePassword,
-                  decoration: InputDecoration(
-                    labelText: "Senha",
-                    suffixIcon: IconButton(
-                        onPressed: () {
-                          setState(() {
-                            _esconderSenha = !_esconderSenha;
-                          });
-                        },
-                        icon: _esconderSenha
-                            ? const Icon(Icons.visibility_outlined)
-                            : const Icon(Icons.visibility_off_outlined)),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  validator: (String? value) {
-                    if (value == null || value.isEmpty) {
-                      return "Por favor, digite sua senha.";
-                    } else if (value.length < 8) {
-                      return "A senha deve ter pelo menos 8 caracteres.";
-                    }
-                    return null;
-                  },
                 ),
                 const SizedBox(height: 25),
-                const RecuperarSenha(),
                 const SizedBox(height: 25),
                 Column(
                   children: [
@@ -145,10 +105,10 @@ class _PaginaLoginUsuarioState extends State<PaginaLoginUsuario> {
                                       const PaginaPrincipal()));
                         }
                         */
-                        botaoEntrarClicado();
+                        botaoResetarSenhaClicado();
                       },
                       child: const Text(
-                        "Entrar",
+                        "Confirmar",
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
@@ -165,61 +125,26 @@ class _PaginaLoginUsuarioState extends State<PaginaLoginUsuario> {
     );
   }
 
-  botaoEntrarClicado() {
+  botaoResetarSenhaClicado() {
     String email = _controleEmail.text;
-    String senha = _controleSenha.text;
 
-    authService.loginUsuario(email: email, senha: senha).then((String? erro) {
+    authService.redefinirSenha(email: email).then((String? erro) {
       if (erro == null) {
         showSnackBar(
             context: context,
-            mensagem: "Login efetuado com sucesso.",
+            mensagem: "Você receberá um email para alterar a senha.",
             isErro: false);
       } else {
         showSnackBar(context: context, mensagem: erro);
       }
     });
-
-    Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => const PaginaPrincipal()),
-        (route) => false);
   }
 
   @override
   void dispose() {
     _focoNoEmail.dispose();
-    _focoNoSenha.dispose();
     _controleEmail.dispose();
-    _controleSenha.dispose();
     super.dispose();
-  }
-}
-
-class RecuperarSenha extends StatelessWidget {
-  const RecuperarSenha({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text("Esqueceu a senha?"),
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(
-                    builder: (context) => const PaginaRecuperacaoSenha()),
-                (route) => false);
-          }, //=> Navigator.pop(context),
-          child: const Text(
-            "Clique aqui",
-            style: TextStyle(color: Color(0xff004088)),
-          ),
-        ),
-      ],
-    );
   }
 }
 
@@ -237,8 +162,7 @@ class FazerCadastro extends StatelessWidget {
         TextButton(
           onPressed: () {
             Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(
-                    builder: (context) => const PaginaCadastroUsuario()),
+                MaterialPageRoute(builder: (context) => const PaginaCadastro()),
                 (route) => route.isFirst);
           },
           child: const Text(
