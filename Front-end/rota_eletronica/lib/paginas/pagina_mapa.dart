@@ -62,12 +62,7 @@ class Cabecalho extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(41.0),
       child: Row(children: [
-        WidgetBotaoCabecalho(
-            icone: const Icon(
-              Icons.arrow_back,
-              color: Color(0xff333333),
-            ),
-            acao: () {}),
+        //WidgetBotaoCabecalho(icone: const Icon(Icons.arrow_back,color: Color(0xff333333),),acao: () {Navigator.pop;}),
         const Spacer(),
         Container(
           width: 56,
