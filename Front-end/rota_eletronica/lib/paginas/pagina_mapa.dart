@@ -4,6 +4,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:rota_eletronica/paginas/busca.dart';
 import 'package:rota_eletronica/paginas/pagina_empresa.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 const accessToken =
     'pk.eyJ1Ijoidml0b3ItY29zdGEiLCJhIjoiY2xvYmNiMGFuMHNkYzJzcWZ1dGxhdHY3NyJ9.TdQy8ZYwN7nQy8JkTqifDQ';
@@ -32,8 +33,8 @@ class _PaginaMapaState extends State<PaginaMapa> {
             posicaoAtual: posicaoAtual,
           ),
           Positioned(
-            bottom: 5.0,
-            right: 5.0,
+            bottom: 25.0,
+            right: 25.0,
             child: InkWell(
               onTap: () {
                 _getCurrentLocation().then((value) =>
@@ -222,7 +223,10 @@ class _MapaState extends State<Mapa> {
                                 nome: 'Eco TI Ambiental',
                                 endereco:
                                     'Av. Coelho e Campos, 784 - Centro, Aracaju - SE, 49060-000',
-                                onPressed: () {},
+                                onPressed: () {
+                                  _openMap(widget.posicaoAtual.latitude,
+                                      widget.posicaoAtual.longitude);
+                                },
                               ),
                             ),
                           ],
@@ -242,6 +246,16 @@ class _MapaState extends State<Mapa> {
         ])
       ],
     );
+  }
+
+  Future<void> _openMap(double latitude, double longitude) async {
+    String latitude_ = latitude.toString();
+    String longitude_ = longitude.toString();
+    String googleURL =
+        'https://www.google.com/maps/search/?api=1&query=$latitude_,$longitude_';
+    await canLaunchUrlString(googleURL)
+        ? await launchUrlString(googleURL)
+        : throw 'Could not open the map.';
   }
 }
 
@@ -294,7 +308,8 @@ class _WidgetEmpresaState extends State<WidgetEmpresa> {
         subtitle: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
           TextButton.icon(
               onPressed: () {
-                widget.onPressed;
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const PaginaEmpresa()));
               },
               icon: const Icon(
                 Icons.add,
@@ -305,7 +320,9 @@ class _WidgetEmpresaState extends State<WidgetEmpresa> {
                 style: TextStyle(color: Color(0xff999999)),
               )),
           TextButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                widget.onPressed();
+              },
               icon: const Icon(
                 Icons.navigation_outlined,
                 color: Color(0xff2D3E9A),
