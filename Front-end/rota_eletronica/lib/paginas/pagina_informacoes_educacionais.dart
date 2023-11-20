@@ -104,11 +104,8 @@ class _WidgetConteudoState extends State<WidgetConteudo> {
               style: const TextStyle(color: Color(0xff2D3E9A)),
             ),
             const SizedBox(height: 5),
-            Text(
-              widget.resumo,
-              style: const TextStyle(color: Color(0xff8497FE)),
-            ),
-            const SizedBox(height: 10),
+            //Text(widget.resumo,style: const TextStyle(color: Color(0xff8497FE)),),
+            //const SizedBox(height: 10),
             Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
