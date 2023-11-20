@@ -140,7 +140,7 @@ class _PaginaOnboardingState extends State<PaginaOnboarding> {
                                 ),
                               )
                             : ElevatedButton(
-                                onPressed: () {
+                                onPressed: () async {
                                   _controlePagina.nextPage(
                                       duration:
                                           const Duration(microseconds: 300),
