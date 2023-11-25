@@ -26,40 +26,42 @@ class _PaginaMapaState extends State<PaginaMapa> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Stack(
-        children: [
-          Mapa(
-            posicaoAtual: posicaoAtual,
-          ),
-          Positioned(
-            bottom: 25.0,
-            right: 25.0,
-            child: InkWell(
-              onTap: () {
-                _getCurrentLocation().then((value) =>
-                    {latitude = value.latitude, longitude = value.longitude});
-                setState(() {
-                  posicaoAtual = LatLng(latitude, longitude);
-                });
-                _liveLocation();
-              },
-              child: Container(
-                height: 40,
-                width: 40,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15)),
-                child: const Icon(
-                  Icons.my_location,
-                  size: 30.0,
-                  color: Color(0xff2D3E9A),
+    return Scaffold(
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Mapa(
+              posicaoAtual: posicaoAtual,
+            ),
+            Positioned(
+              bottom: 25.0,
+              right: 25.0,
+              child: InkWell(
+                onTap: () {
+                  _getCurrentLocation().then((value) =>
+                      {latitude = value.latitude, longitude = value.longitude});
+                  setState(() {
+                    posicaoAtual = LatLng(latitude, longitude);
+                  });
+                  _liveLocation();
+                },
+                child: Container(
+                  height: 40,
+                  width: 40,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15)),
+                  child: const Icon(
+                    Icons.my_location,
+                    size: 30.0,
+                    color: Color(0xff2D3E9A),
+                  ),
                 ),
               ),
             ),
-          ),
-          const Cabecalho(),
-        ],
+            const Cabecalho(),
+          ],
+        ),
       ),
     );
   }
