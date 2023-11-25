@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rota_eletronica/services/flutter_fire_auth.dart';
 import 'package:rota_eletronica/components/show_snackbar.dart';
 import 'package:rota_eletronica/paginas/pagina_cadastro_ponto_de_coleta.dart';
-import 'package:rota_eletronica/teste/pagina_inicial_ponto_de_coleta.dart';
+import 'package:rota_eletronica/paginas/pagina_inicial_ponto_de_coleta.dart';
 
 class PaginaLoginPontoDeColeta extends StatefulWidget {
   const PaginaLoginPontoDeColeta({super.key});
