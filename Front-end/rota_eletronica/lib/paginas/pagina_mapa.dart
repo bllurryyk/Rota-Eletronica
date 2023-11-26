@@ -11,11 +11,12 @@ const accessToken =
 
 const aracaju = LatLng(-10.9095, -37.0748);
 
-const coordenadaEcoti = LatLng(-10.905721217774573, -37.05664796234068);
-const coordenadaMLItabaianinha = LatLng(-10.909832086058183, -37.0503859316581);
-const coordenadaMLJoaoPessoa = LatLng(-10.91008177003436, -37.04924693365784);
-const coordenadaMLSJardins = LatLng(-10.940399448276365, -37.06016747716989);
-const coordenadaMLSPremio = LatLng(-10.851321749502564, -37.07835242001214);
+const coordenadaEcoti = LatLng(-10.905928665087076, -37.05662786030065);
+const coordenadaMLItabaianinha =
+    LatLng(-10.909950151683185, -37.05044478181204);
+const coordenadaMLJoaoPessoa = LatLng(-10.90970093483982, -37.049139216573565);
+const coordenadaMLSJardins = LatLng(-10.943022363079116, -37.05981342593105);
+const coordenadaMLSPremio = LatLng(-10.851341244038995, -37.078296640741044);
 
 class PaginaMapa extends StatefulWidget {
   const PaginaMapa({super.key});
