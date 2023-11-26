@@ -1,7 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:rota_eletronica/paginas/pagina_login_usuario.dart';
+import 'package:rota_eletronica/paginas/pagina_login_ponto_de_coleta.dart';
 import 'package:rota_eletronica/paginas/pagina_cadastro_ponto_de_coleta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -118,7 +118,7 @@ class Botoes extends StatelessWidget {
             preferencia.setBool('mostrarInicio', true);
             Navigator.of(context).pushAndRemoveUntil(
                 MaterialPageRoute(
-                    builder: (context) => const PaginaLoginUsuario()),
+                    builder: (context) => const PaginaLoginPontoDeColeta()),
                 (route) => route.isFirst);
           },
           child: const Text(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rota_eletronica/paginas/busca.dart';
 
 class PaginaInicial extends StatefulWidget {
-  const PaginaInicial({Key? key}) : super(key: key);
+  const PaginaInicial({super.key});
 
   @override
   State<PaginaInicial> createState() => _PaginaInicialState();
@@ -11,20 +11,22 @@ class PaginaInicial extends StatefulWidget {
 class _PaginaInicialState extends State<PaginaInicial> {
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            //Promo(),
-            Cabecalho(),
-            Pesquisa(),
-            CabecalhoTags(),
-            ListaTags(),
-            CabecalhoCategorias(),
-            ListaCategorias(),
-          ],
+    return const Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              //Promo(),
+              Cabecalho(),
+              Pesquisa(),
+              CabecalhoTags(),
+              ListaTags(),
+              CabecalhoCategorias(),
+              ListaCategorias(),
+            ],
+          ),
         ),
       ),
     );

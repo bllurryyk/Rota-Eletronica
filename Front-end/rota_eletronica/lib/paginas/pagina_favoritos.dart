@@ -58,33 +58,35 @@ class _PaginaFavoritosState extends State<PaginaFavoritos> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Marcados como\nfavoritos',
-              style: TextStyle(
-                  color: Color(0xff2D3E9A),
-                  fontSize: 40.0,
-                  fontWeight: FontWeight.w600),
-            ),
-            const SizedBox(height: 25),
-            Expanded(
-              child: ListView.separated(
-                itemCount: empresas.length,
-                padding: const EdgeInsets.all(16.0),
-                itemBuilder: (BuildContext context, int index) {
-                  return empresas[index];
-                },
-                separatorBuilder: (BuildContext context, int index) {
-                  return const SizedBox(height: 10);
-                },
+    return Scaffold(
+      body: SafeArea(
+        child: Container(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Marcados como\nfavoritos',
+                style: TextStyle(
+                    color: Color(0xff2D3E9A),
+                    fontSize: 40.0,
+                    fontWeight: FontWeight.w600),
               ),
-            ),
-          ],
+              const SizedBox(height: 25),
+              Expanded(
+                child: ListView.separated(
+                  itemCount: empresas.length,
+                  padding: const EdgeInsets.all(16.0),
+                  itemBuilder: (BuildContext context, int index) {
+                    return empresas[index];
+                  },
+                  separatorBuilder: (BuildContext context, int index) {
+                    return const SizedBox(height: 10);
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
