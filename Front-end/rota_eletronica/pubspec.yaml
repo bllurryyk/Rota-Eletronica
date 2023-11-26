@@ -45,6 +45,7 @@ dependencies:
   firebase_core: ^2.21.0
   flutter_map_cancellable_tile_provider: ^1.0.0
   url_launcher: ^6.1.14
+  flutter_progress_hud: ^2.0.2
 
 dev_dependencies:
   flutter_test:
