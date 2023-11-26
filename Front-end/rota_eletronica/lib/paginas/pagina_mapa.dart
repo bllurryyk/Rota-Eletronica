@@ -10,7 +10,12 @@ const accessToken =
     'pk.eyJ1Ijoidml0b3ItY29zdGEiLCJhIjoiY2xvYmNiMGFuMHNkYzJzcWZ1dGxhdHY3NyJ9.TdQy8ZYwN7nQy8JkTqifDQ';
 
 const aracaju = LatLng(-10.9095, -37.0748);
-const blocoD = LatLng(-10.967934374633456, -37.058787347198496);
+
+const coordenadaEcoti = LatLng(-10.905721217774573, -37.05664796234068);
+const coordenadaMLItabaianinha = LatLng(-10.909832086058183, -37.0503859316581);
+const coordenadaMLJoaoPessoa = LatLng(-10.91008177003436, -37.04924693365784);
+const coordenadaMLSJardins = LatLng(-10.940399448276365, -37.06016747716989);
+const coordenadaMLSPremio = LatLng(-10.851321749502564, -37.07835242001214);
 
 class PaginaMapa extends StatefulWidget {
   const PaginaMapa({super.key});
@@ -204,46 +209,198 @@ class _MapaState extends State<Mapa> {
         ),
         MarkerLayer(markers: [
           Marker(
-              point: blocoD,
-              child: InkWell(
-                  onTap: () {
-                    showModalBottomSheet(
-                      backgroundColor: Colors.transparent,
-                      barrierColor: Colors.transparent,
-                      useRootNavigator: true,
-                      isDismissible: true,
-                      useSafeArea: true,
-                      context: context,
-                      builder: (context) {
-                        return Wrap(
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  bottom: 70.0, left: 50.0, right: 50.0),
-                              child: WidgetEmpresa(
-                                nome: 'Eco TI Ambiental',
-                                endereco:
-                                    'Av. Coelho e Campos, 784 - Centro, Aracaju - SE, 49060-000',
-                                onPressed: () {
-                                  _openMap(widget.posicaoAtual.latitude,
-                                      widget.posicaoAtual.longitude);
-                                },
-                              ),
-                            ),
-                          ],
-                        );
-                      },
+            point: coordenadaEcoti,
+            child: InkWell(
+              onTap: () {
+                showModalBottomSheet(
+                  backgroundColor: Colors.transparent,
+                  barrierColor: Colors.transparent,
+                  useRootNavigator: true,
+                  isDismissible: true,
+                  useSafeArea: true,
+                  context: context,
+                  builder: (context) {
+                    return Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              bottom: 70.0, left: 50.0, right: 50.0),
+                          child: WidgetEmpresa(
+                              nome: 'EOCTI',
+                              endereco:
+                                  'AVENIDA COELHO E CAMPOS, 784 - SEM COMPLEMENTO - SANTO ANTONIO - ARACAJU - SE, 49.060-000',
+                              onPressed: () {
+                                _openMap(coordenadaEcoti.latitude,
+                                    coordenadaEcoti.longitude);
+                              }),
+                        ),
+                      ],
                     );
                   },
-                  child:
-                      ClipRRect(child: Image.asset('assets/images/pin.png')))),
+                );
+              },
+              child: ClipRRect(
+                child: Image.asset('assets/images/pin.png'),
+              ),
+            ),
+          ),
+          Marker(
+            point: coordenadaMLItabaianinha,
+            child: InkWell(
+              onTap: () {
+                showModalBottomSheet(
+                  backgroundColor: Colors.transparent,
+                  barrierColor: Colors.transparent,
+                  useRootNavigator: true,
+                  isDismissible: true,
+                  useSafeArea: true,
+                  context: context,
+                  builder: (context) {
+                    return Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              bottom: 70.0, left: 50.0, right: 50.0),
+                          child: WidgetEmpresa(
+                              nome:
+                                  'MAGAZINE LUIZA S/A - ARACAJU - ITABAIANINHA',
+                              endereco:
+                                  'ITABAIANINHA, 283 - SEM COMPLEMENTO - SEM BAIRRO - ARACAJU - SE, 49.010-190',
+                              onPressed: () {
+                                _openMap(coordenadaMLItabaianinha.latitude,
+                                    coordenadaMLItabaianinha.longitude);
+                              }),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              child: ClipRRect(
+                child: Image.asset('assets/images/pin.png'),
+              ),
+            ),
+          ),
+          Marker(
+            point: coordenadaMLJoaoPessoa,
+            child: InkWell(
+              onTap: () {
+                showModalBottomSheet(
+                  backgroundColor: Colors.transparent,
+                  barrierColor: Colors.transparent,
+                  useRootNavigator: true,
+                  isDismissible: true,
+                  useSafeArea: true,
+                  context: context,
+                  builder: (context) {
+                    return Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              bottom: 70.0, left: 50.0, right: 50.0),
+                          child: WidgetEmpresa(
+                              nome:
+                                  'MAGAZINE LUIZA S/A - ARACAJU - RUA JOAO PESSOA',
+                              endereco:
+                                  'JOAO PESSOA, 320 - SEM COMPLEMENTO - SEM BAIRRO - ARACAJU - SE, 49.010-130',
+                              onPressed: () {
+                                _openMap(coordenadaMLJoaoPessoa.latitude,
+                                    coordenadaMLJoaoPessoa.longitude);
+                              }),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              child: ClipRRect(
+                child: Image.asset('assets/images/pin.png'),
+              ),
+            ),
+          ),
+          Marker(
+            point: coordenadaMLSJardins,
+            child: InkWell(
+              onTap: () {
+                showModalBottomSheet(
+                  backgroundColor: Colors.transparent,
+                  barrierColor: Colors.transparent,
+                  useRootNavigator: true,
+                  isDismissible: true,
+                  useSafeArea: true,
+                  context: context,
+                  builder: (context) {
+                    return Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              bottom: 70.0, left: 50.0, right: 50.0),
+                          child: WidgetEmpresa(
+                              nome:
+                                  'MAGAZINE LUIZA S/A - ARACAJU - SHOP JARDINS',
+                              endereco:
+                                  'GERALDO BARRETO SOBRAL, 0 - SEM COMPLEMENTO - SEM BAIRRO - ARACAJU - SE, 49.026-900',
+                              onPressed: () {
+                                _openMap(coordenadaMLSJardins.latitude,
+                                    coordenadaMLSJardins.longitude);
+                              }),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              child: ClipRRect(
+                child: Image.asset('assets/images/pin.png'),
+              ),
+            ),
+          ),
+          Marker(
+            point: coordenadaMLSPremio,
+            child: InkWell(
+              onTap: () {
+                showModalBottomSheet(
+                  backgroundColor: Colors.transparent,
+                  barrierColor: Colors.transparent,
+                  useRootNavigator: true,
+                  isDismissible: true,
+                  useSafeArea: true,
+                  context: context,
+                  builder: (context) {
+                    return Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              bottom: 70.0, left: 50.0, right: 50.0),
+                          child: WidgetEmpresa(
+                              nome: 'MAGAZINE LUIZA S/A - SHOPPING PREMIO',
+                              endereco:
+                                  'AVENIDA A C A COLETORA A COMPLEXO HABITACIONAL T 0, S/N - SEM COMPLEMENTO - SEM BAIRRO - NOSSA SENHORA DO SOCORRO - SE, 49.160-000',
+                              onPressed: () {
+                                _openMap(coordenadaMLSPremio.latitude,
+                                    coordenadaMLSPremio.longitude);
+                              }),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              child: ClipRRect(
+                child: Image.asset('assets/images/pin.png'),
+              ),
+            ),
+          ),
           Marker(
               point: widget.posicaoAtual,
               child: const Icon(
-                Icons.circle,
+                Icons.pin_drop_sharp,
                 color: Colors.purple,
-                size: 10,
               )),
         ])
       ],
