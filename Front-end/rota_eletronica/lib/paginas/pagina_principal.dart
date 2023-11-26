@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_progress_hud/flutter_progress_hud.dart';
 import 'package:rota_eletronica/paginas/pagina_configuracao.dart';
 import 'package:rota_eletronica/paginas/pagina_favoritos.dart';
 import 'package:rota_eletronica/paginas/pagina_informacoes_educacionais.dart';
@@ -17,10 +18,15 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
   final List<Widget> _telas = [
     const PaginaInicial(),
     const PaginaInformacoesEducacional(),
-    const PaginaMapa(),
+    ProgressHUD(child: Builder(builder: (context) => const PaginaMapa())),
     const PaginaFavoritos(),
     const PaginaMinhaConta()
   ];
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +45,13 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
           setState(() {
             _indiceAtual = newIndex;
           });
+          if (_indiceAtual == 2) {
+            final progress = ProgressHUD.of(context);
+            progress?.show();
+            Future.delayed(const Duration(seconds: 3), () {
+              progress?.dismiss();
+            });
+          }
         },
         items: const [
           BottomNavigationBarItem(
