@@ -59,7 +59,7 @@ class Promo extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(25.0),
                 child: Text(
-                  "Rota Eletrônica",
+                  "EcoPonto",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 22,

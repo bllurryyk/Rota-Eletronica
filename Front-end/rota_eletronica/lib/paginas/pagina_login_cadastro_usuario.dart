@@ -83,7 +83,7 @@ class Corpo extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         Text(
-          "Rota Eletrônica",
+          "EcoPonto",
           style: Theme.of(context).textTheme.headlineLarge,
         ),
         const SizedBox(height: 10),
